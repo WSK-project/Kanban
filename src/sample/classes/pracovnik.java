@@ -11,9 +11,9 @@ public class pracovnik {
         this.dostupny = dostupny;
     }
 
-    /*
-    Metoda se vzdycky zavola kdyz se vyrobek dostane do stavu 'Done' a
-    simuluje kontrolu vyrobku, Kontrola trva podle jednotlivych vyrobku
+    /**
+     * Metoda se vzdycky zavola kdyz se vyrobek dostane do stavu 'Done' a
+     * simuluje kontrolu vyrobku, Kontrola trva podle jednotlivych vyrobku
      */
     public boolean kontroluj(Vyrobky vyrobek, VyrobniLinka vl) throws InterruptedException {
         prejdiKVyrobniLince(vl);
@@ -26,9 +26,9 @@ public class pracovnik {
         return vyrobek.jeVadny();
     }
 
-    /*
-    Metoda simuluje prechod pracovnika mezi jednotlivymi vyrobnimi linkami
-    pracujeme za predpokladu ze jsou vsechny stejne daleko od sebe
+    /**
+     * Metoda simuluje prechod pracovnika mezi jednotlivymi vyrobnimi linkami
+     * pracujeme za predpokladu ze jsou vsechny stejne daleko od sebe
      */
     private void prejdiKVyrobniLince (VyrobniLinka vl) throws InterruptedException {
         Utils.addPrubehList("Kontrolor: " + jmeno + " se premistuje k vyrobni lince " + vl.toString() + ".\n");

@@ -19,9 +19,9 @@ public class Vyrobky {
         this.potrebneSuroviny = potrebneSuroviny;
     }
 
-    /*
-    Metoda nahodne vygeneruju jestli je vyrobek vadny nebo ne
-    Existuje 5% sance ze je vadny
+    /**
+    * Metoda nahodne vygeneruju jestli je vyrobek vadny nebo ne
+    * Existuje 5% sance ze je vadny
     */
     public boolean jeVadny() {
         Random rdm = new Random();

@@ -21,8 +21,8 @@ public class Utils {
         prubehList.add(s);
     }
 
-    /*
-    Metoda simuluje prevoz ze vzdaleneho skladu
+    /**
+     * Metoda simuluje prevoz ze vzdaleneho skladu
      */
     public void prevozZeVzdalenehoSkladu(Suroviny sur) throws InterruptedException {
         Utils.addPrubehList("Byl informovan vzdaleny sklad o potrebe suroviny: " + sur.getNazev() + ".\n");
@@ -30,5 +30,18 @@ public class Utils {
         int result = rdm.nextInt(10000);
         Thread.sleep(result + 10000);
         Utils.addPrubehList("Surovina: " + sur.getNazev() + " ze vzdaleneho skladu dodana.\n");
+    }
+
+    /**
+     * Metoda pro simulaci vyroby
+     * 1, prevede vsechny vyrobku do stavu/useku TO_DO
+     * 2, zapta na mnozstvi na skladech, tzn. ziska si potrebne mnozstvi surovin
+     * prvni zkusi lokalni sklad pokud neni koukne do vzdaleneho
+     * 3, pokud ziska suroviny zapocne vyrobu podle casu u vyrobku a prevede ho do stavu INPROGRESS
+     * 4, nasimuluje kontrolora a checkne jestli je vyrobek ok pokud ne jde znovu do skladu
+     * pokud v pohode preda ho do stavu/useku DONE
+     * 5, vsechno se zapisuje do listu v utils ktery do dava do textfieuldu aby bylo videl co se deje
+     */
+    public void vyrob() {
     }
 }
