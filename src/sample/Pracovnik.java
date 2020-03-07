@@ -2,11 +2,11 @@ package sample;
 
 import java.time.LocalDateTime;
 
-public class pracovnik {
+public class Pracovnik {
     String jmeno;
     boolean dostupny;
 
-    public pracovnik(String jmeno, boolean dostupny) {
+    public Pracovnik(String jmeno, boolean dostupny) {
         this.jmeno = jmeno;
         this.dostupny = dostupny;
     }
@@ -53,5 +53,13 @@ public class pracovnik {
 
     public void setDostupny(boolean dostupny) {
         this.dostupny = dostupny;
+    }
+
+    @Override
+    public String toString() {
+        return "pracovnik{" +
+                "jmeno='" + jmeno + '\'' +
+                ", dostupny=" + dostupny +
+                '}';
     }
 }

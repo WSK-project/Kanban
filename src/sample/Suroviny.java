@@ -2,15 +2,10 @@ package sample;
 
 public class Suroviny {
     private String nazev;
-    private int mnozstvi;
-    private boolean dostupny;
 
-    public Suroviny(String nazev, int mnozstvi, boolean dostupny) {
+    public Suroviny(String nazev) {
         this.nazev = nazev;
-        this.mnozstvi = mnozstvi;
-        this.dostupny = dostupny;
     }
-
 
     //getters and setters
     public String getNazev() {
@@ -21,19 +16,10 @@ public class Suroviny {
         this.nazev = nazev;
     }
 
-    public int getMnozstvi() {
-        return mnozstvi;
-    }
-
-    public void setMnozstvi(int mnozstvi) {
-        this.mnozstvi = mnozstvi;
-    }
-
-    public boolean isDostupny() {
-        return dostupny;
-    }
-
-    public void setDostupny(boolean dostupny) {
-        this.dostupny = dostupny;
+    @Override
+    public String toString() {
+        return "Suroviny{" +
+                "nazev='" + nazev + '\'' +
+                '}';
     }
 }

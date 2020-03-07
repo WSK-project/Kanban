@@ -3,14 +3,8 @@ package sample;
 import java.util.Random;
 import java.util.Set;
 
-/**
- * Uprimne netusim jak pokracovat, protoze nevim jestli to fakt maji byt vsechno pres vlakna
- * Takze bych jebnul nejake cviko a zeptal bych se ho jestli mame delat ty vlakna (asi to bude lehci s nima)
- * jinak tady asi bude implements runnable a override metodu run() at se pri kaydem vtvoreni vyrobku vytvori vlakno,
- * coz je asi to co potrebujeme ale netusakuju, musime nekdy zkusit spolu
- * zajebal jsem nejaky zaklad snad dostatecny
- */
-public class Vyrobky {
+
+public class Vyrobky extends Thread {
 
     private String nazev;
     private int delkaVyroby;
@@ -19,6 +13,7 @@ public class Vyrobky {
     private Set<Suroviny> potrebneSuroviny;
 
     public Vyrobky(String nazev, int delkaVyroby, int casPotrebnyNaKontrolu, Useky momentalniUsek, Set<Suroviny> potrebneSuroviny) {
+        super(nazev);
         this.nazev = nazev;
         this.delkaVyroby = delkaVyroby;
         this.casPotrebnyNaKontrolu = casPotrebnyNaKontrolu;
@@ -27,15 +22,38 @@ public class Vyrobky {
     }
 
     /**
-    * Metoda nahodne vygeneruju jestli je vyrobek vadny nebo ne
-    * Existuje 5% sance ze je vadny
-    */
+     * Metoda nahodne vygeneruju jestli je vyrobek vadny nebo ne
+     * Existuje 5% sance ze je vadny
+     */
     public boolean jeVadny() {
         Random rdm = new Random();
         int result = rdm.nextInt(100);
         return result > 95;
     }
 
+    /**
+     * Metoda pro zmenu useky ve kterem se vyrobek nachazi
+     *
+     * @param vyrobek
+     */
+    public void zmenUsek(Vyrobky vyrobek) {
+        if (vyrobek.getMomentalniUsek() == Useky.BACKLOG) {
+            vyrobek.setMomentalniUsek(Useky.TO_DO);
+        } else if (vyrobek.getMomentalniUsek() == Useky.TO_DO) {
+            vyrobek.setMomentalniUsek(Useky.IN_PROGRESS);
+        } else if (vyrobek.getMomentalniUsek() == Useky.IN_PROGRESS) {
+            vyrobek.setMomentalniUsek(Useky.DONE);
+        }
+    }
+
+    @Override
+    public void run() {
+        try {
+            Utils.vyrob(Vyrobky.this);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     //getters and setters
@@ -77,5 +95,16 @@ public class Vyrobky {
 
     public void setPotrebneSuroviny(Set<Suroviny> potrebneSuroviny) {
         this.potrebneSuroviny = potrebneSuroviny;
+    }
+
+    @Override
+    public String toString() {
+        return "Vyrobky{" +
+                "nazev='" + nazev + '\'' +
+                ", delkaVyroby=" + delkaVyroby +
+                ", casPotrebnyNaKontrolu=" + casPotrebnyNaKontrolu +
+                ", momentalniUsek=" + momentalniUsek +
+                ", potrebneSuroviny=" + potrebneSuroviny +
+                '}';
     }
 }

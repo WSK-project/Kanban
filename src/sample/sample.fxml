@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Menu?>
@@ -9,10 +10,10 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Text?>
-
 
 <BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="899.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <top>
@@ -29,7 +30,7 @@
       </MenuBar>
    </top>
    <center>
-      <SplitPane dividerPositions="0.2235217673814165" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.22547108512020791" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="868.0" prefWidth="760.0">
                <children>
@@ -40,34 +41,43 @@
                   <Separator layoutX="-1.0" layoutY="313.0" prefHeight="5.0" prefWidth="346.0" />
                   <Separator layoutX="-2.0" layoutY="813.0" prefHeight="6.0" prefWidth="347.0" />
                   <TextArea fx:id="txtLogis" layoutX="12.0" layoutY="349.0" prefHeight="459.0" prefWidth="317.0" />
-                  <Text layoutX="14.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ocekavany cas pro dokonceni: 3481s" />
-                  <CheckBox fx:id="check1" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" text="Vyrobek 1 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
-                  <CheckBox fx:id="check2" layoutX="14.0" layoutY="77.0" mnemonicParsing="false" text="Vyrobek2 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
-                  <CheckBox fx:id="check3" layoutX="14.0" layoutY="127.0" mnemonicParsing="false" text="Vyrobek3 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
-                  <CheckBox fx:id="check4" layoutX="14.0" layoutY="177.0" mnemonicParsing="false" text="Vyrobek4 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
-                  <CheckBox fx:id="check5" layoutX="14.0" layoutY="227.0" mnemonicParsing="false" text="Vyrobek5 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
-                  <Button fx:id="btnSTART" layoutX="238.0" layoutY="279.0" mnemonicParsing="false" onAction="#makeSomeNoise" prefHeight="27.0" prefWidth="90.0" text="START" />
+                  <CheckBox fx:id="check1" layoutX="32.0" layoutY="27.0" mnemonicParsing="false" text="Vyrobek 1 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
+                  <CheckBox fx:id="check2" layoutX="32.0" layoutY="77.0" mnemonicParsing="false" text="Vyrobek2 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
+                  <CheckBox fx:id="check3" layoutX="32.0" layoutY="127.0" mnemonicParsing="false" text="Vyrobek3 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
+                  <CheckBox fx:id="check4" layoutX="32.0" layoutY="177.0" mnemonicParsing="false" text="Vyrobek4 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
+                  <CheckBox fx:id="check5" layoutX="32.0" layoutY="227.0" mnemonicParsing="false" text="Vyrobek5 -&gt; 3ks toto, 9ks tamto, 23ks tohle" />
+                  <Button fx:id="btnSTART" layoutX="14.0" layoutY="269.0" mnemonicParsing="false" onAction="#makeSomeNoise" prefHeight="27.0" prefWidth="300.0" text="START" />
                </children>
             </AnchorPane>
-            <SplitPane dividerPositions="0.33064516129032256, 0.6658986175115207" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
-              <items>
-                <AnchorPane fx:id="anchorTD" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                     <children>
-                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TO DO" />
-                     </children>
-                  </AnchorPane>
-                <AnchorPane fx:id="anchorIP" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                     <children>
-                        <Text layoutX="21.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IN PROGRESS" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="anchorDN" prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DONE" />
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
+            <Accordion>
+              <panes>
+                  <TitledPane animated="false" text="Vyrobek1">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+                <TitledPane animated="false" text="Vyrobek2">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Vyrobek3">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Vyrobek4">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                  <TitledPane animated="false" text="Vyrobek5">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
         </items>
       </SplitPane>
    </center>

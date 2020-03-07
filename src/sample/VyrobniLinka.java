@@ -2,7 +2,7 @@ package sample;
 
 public class VyrobniLinka {
     private String nazev;
-    private boolean dostupny;
+    private volatile boolean dostupny;
 
     public VyrobniLinka(String nazev, boolean dostupny) {
         this.nazev = nazev;
@@ -19,11 +19,19 @@ public class VyrobniLinka {
         this.nazev = nazev;
     }
 
-    public boolean isDostupny() {
+    public synchronized boolean isDostupny() {
         return dostupny;
     }
 
-    public void setDostupny(boolean dostupny) {
+    public synchronized void setDostupny (boolean dostupny) {
         this.dostupny = dostupny;
+    }
+
+    @Override
+    public String toString() {
+        return "VyrobniLinka{" +
+                "nazev='" + nazev + '\'' +
+                ", dostupny=" + dostupny +
+                '}';
     }
 }
