@@ -1,4 +1,4 @@
-package sample.classes;
+package sample;
 
 public class Suroviny {
     private String nazev;

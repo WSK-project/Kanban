@@ -1,4 +1,4 @@
-package sample.classes;
+package sample;
 
 public class VyrobniLinka {
     private String nazev;

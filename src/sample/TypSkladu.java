@@ -1,4 +1,4 @@
-package sample.classes;
+package sample;
 
 public enum TypSkladu {
     MISTNI, VZDALENY

@@ -1,6 +1,4 @@
-package sample.classes;
-
-import com.sun.deploy.net.MessageHeader;
+package sample;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,5 +41,13 @@ public class Utils {
      * 5, vsechno se zapisuje do listu v utils ktery do dava do textfieuldu aby bylo videl co se deje
      */
     public void vyrob() {
+    }
+
+    /**
+     * Metoda kterou si vytvorime vsechno (suroviny, vyrobni linky a podobne picoviny) at si tim nezasirame
+     * controller k cemu jinemu pak mame ty utilsy ze
+     */
+    public void letsRoll() {
+
     }
 }

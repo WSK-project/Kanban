@@ -1,4 +1,4 @@
-package sample.classes;
+package sample;
 
 import java.util.Set;
 

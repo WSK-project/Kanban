@@ -1,8 +1,15 @@
-package sample.classes;
+package sample;
 
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * Uprimne netusim jak pokracovat, protoze nevim jestli to fakt maji byt vsechno pres vlakna
+ * Takze bych jebnul nejake cviko a zeptal bych se ho jestli mame delat ty vlakna (asi to bude lehci s nima)
+ * jinak tady asi bude implements runnable a override metodu run() at se pri kaydem vtvoreni vyrobku vytvori vlakno,
+ * coz je asi to co potrebujeme ale netusakuju, musime nekdy zkusit spolu
+ * zajebal jsem nejaky zaklad snad dostatecny
+ */
 public class Vyrobky {
 
     private String nazev;
