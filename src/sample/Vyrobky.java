@@ -1,7 +1,10 @@
 package sample;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class Vyrobky extends Thread {
@@ -10,7 +13,7 @@ public class Vyrobky extends Thread {
     private int delkaVyroby;
     private int casPotrebnyNaKontrolu;
     private Useky momentalniUsek;
-    private Set<Suroviny> potrebneSuroviny;
+    private List<Suroviny> potrebneSuroviny;
 
     public Vyrobky(String nazev, int delkaVyroby, int casPotrebnyNaKontrolu, Useky momentalniUsek, Set<Suroviny> potrebneSuroviny) {
         super(nazev);
@@ -18,7 +21,7 @@ public class Vyrobky extends Thread {
         this.delkaVyroby = delkaVyroby;
         this.casPotrebnyNaKontrolu = casPotrebnyNaKontrolu;
         this.momentalniUsek = momentalniUsek;
-        this.potrebneSuroviny = potrebneSuroviny;
+        this.potrebneSuroviny = (List<Suroviny>) potrebneSuroviny;
     }
 
     /**
@@ -89,12 +92,18 @@ public class Vyrobky extends Thread {
         this.momentalniUsek = momentalniUsek;
     }
 
-    public Set<Suroviny> getPotrebneSuroviny() {
+    public List<Suroviny> getPotrebneSuroviny() {
         return potrebneSuroviny;
     }
 
-    public void setPotrebneSuroviny(Set<Suroviny> potrebneSuroviny) {
+    public void setPotrebneSuroviny(List<Suroviny> potrebneSuroviny) {
         this.potrebneSuroviny = potrebneSuroviny;
+    }
+
+    public List<Suroviny> getSurVyrobkyByNazev(final String nazevvyr){
+        return getPotrebneSuroviny().stream()
+                .filter(Vyrobky -> nazevvyr.equals(Vyrobky.getNazev()))
+                .collect(Collectors.toList());
     }
 
     @Override

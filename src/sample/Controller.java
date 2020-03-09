@@ -1,21 +1,18 @@
 package sample;
 
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
     //jednotlive pejny
@@ -47,6 +44,12 @@ public class Controller implements Initializable {
     @FXML
     public Text procesProcenta;
 
+    //seznamy pro vyrobky
+    @FXML
+    public ListView listviewone;
+
+    public Vyrobky vyrobky;
+
     //co se stane pred spustenim
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -54,7 +57,7 @@ public class Controller implements Initializable {
     }
 
     /**
-     * btn kterym se zapne cely proces prvni checkne ktere vyrobky se maji vyrabek,
+     * btn kterym se zapne cely proces prvni checkne ktere vyrobky se maji vyrabet,
      * zalozi jejich instance a zavola metodu run
      * @param actionEvent
      */
@@ -69,6 +72,11 @@ public class Controller implements Initializable {
         v4.start();
     }
 
+    public void toListView() {
+        String nazev = "Vyrobek1";
+        sur = vyrobky.getSurVyrobkyByNazev(nazev);
+        listviewone.setItems();
+    }
     /**
      * Jenom napad ze by zobrazila treba alert se stavem jednotlivych surovin
      * @param actionEvent
@@ -89,4 +97,6 @@ public class Controller implements Initializable {
      */
     public void menuClose(ActionEvent actionEvent) {
     }
+
+
 }
