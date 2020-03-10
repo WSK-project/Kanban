@@ -48,12 +48,43 @@ public class Controller implements Initializable {
     @FXML
     public ListView listviewone;
 
-    public Vyrobky vyrobky;
+    //vyrobky instance
+    Vyrobky v1, v2, v3, v4, v5;
 
     //co se stane pred spustenim
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Utils.letsRoll();
+        v1 = new Vyrobky("Vyrobek1",
+                7000,
+                4000,
+                Useky.BACKLOG,
+                Arrays.asList(Instance.s_1, Instance.s_2, Instance.s_3));
+        v2 = new Vyrobky("Vyrobek2",
+                20000,
+                5000,
+                Useky.BACKLOG,
+                Arrays.asList(Instance.s_1, Instance.s_4, Instance.s_5));
+        v3 = new Vyrobky("Vyrobek3",
+                10000,
+                4500,
+                Useky.BACKLOG,
+                Arrays.asList(Instance.s_2, Instance.s_4, Instance.s_6));
+        v4 = new Vyrobky("Vyrobek4",
+                2000,
+                8000,
+                Useky.BACKLOG,
+                Arrays.asList(Instance.s_3, Instance.s_5, Instance.s_6));
+        v5 = new Vyrobky("Vyrobek5",
+                2000,
+                2000,
+                Useky.BACKLOG,
+                Arrays.asList(Instance.s_1, Instance.s_6, Instance.s_7));
+
+        check1.setText(v1.textForPane());
+        check2.setText(v2.textForPane());
+        check3.setText(v3.textForPane());
+        check4.setText(v4.textForPane());
+        check5.setText(v5.textForPane());
     }
 
     /**
@@ -62,21 +93,28 @@ public class Controller implements Initializable {
      * @param actionEvent
      */
     public void makeSomeNoise(ActionEvent actionEvent) {
-        Vyrobky v1 = new Vyrobky("Vyrobek1", 10000, 4500, Useky.BACKLOG, null);
-        Vyrobky v2 = new Vyrobky("Vyrobek2", 10000, 4500, Useky.BACKLOG, null);
-        Vyrobky v3 = new Vyrobky("Vyrobek3", 10000, 4500, Useky.BACKLOG, null);
-        Vyrobky v4 = new Vyrobky("Vyrobek4", 10000, 4500, Useky.BACKLOG, null);
-        v1.start();
-        v2.start();
-        v3.start();
-        v4.start();
+        if (check1.isSelected()) {
+            v1.start();
+        }
+        if (check2.isSelected()) {
+            v2.start();
+        }
+        if (check3.isSelected()) {
+            v3.start();
+        }
+        if (check4.isSelected()) {
+            v4.start();
+        }
+        if (check5.isSelected()) {
+            v5.start();
+        }
+        btnSTART.setDisable(true);
     }
 
     public void toListView() {
-        String nazev = "Vyrobek1";
-        sur = vyrobky.getSurVyrobkyByNazev(nazev);
-        listviewone.setItems();
+
     }
+
     /**
      * Jenom napad ze by zobrazila treba alert se stavem jednotlivych surovin
      * @param actionEvent

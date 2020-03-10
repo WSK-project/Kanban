@@ -1,5 +1,6 @@
 package sample;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,13 +16,13 @@ public class Vyrobky extends Thread {
     private Useky momentalniUsek;
     private List<Suroviny> potrebneSuroviny;
 
-    public Vyrobky(String nazev, int delkaVyroby, int casPotrebnyNaKontrolu, Useky momentalniUsek, Set<Suroviny> potrebneSuroviny) {
+    public Vyrobky(String nazev, int delkaVyroby, int casPotrebnyNaKontrolu, Useky momentalniUsek, List<Suroviny> potrebneSuroviny) {
         super(nazev);
         this.nazev = nazev;
         this.delkaVyroby = delkaVyroby;
         this.casPotrebnyNaKontrolu = casPotrebnyNaKontrolu;
         this.momentalniUsek = momentalniUsek;
-        this.potrebneSuroviny = (List<Suroviny>) potrebneSuroviny;
+        this.potrebneSuroviny = potrebneSuroviny;
     }
 
     /**
@@ -34,30 +35,34 @@ public class Vyrobky extends Thread {
         return result > 95;
     }
 
-    /**
-     * Metoda pro zmenu useky ve kterem se vyrobek nachazi
-     *
-     * @param vyrobek
-     */
-    public void zmenUsek(Vyrobky vyrobek) {
-        if (vyrobek.getMomentalniUsek() == Useky.BACKLOG) {
-            vyrobek.setMomentalniUsek(Useky.TO_DO);
-        } else if (vyrobek.getMomentalniUsek() == Useky.TO_DO) {
-            vyrobek.setMomentalniUsek(Useky.IN_PROGRESS);
-        } else if (vyrobek.getMomentalniUsek() == Useky.IN_PROGRESS) {
-            vyrobek.setMomentalniUsek(Useky.DONE);
-        }
-    }
 
+    /**
+     * Metoda pro simulaci vyroby
+     * 1, prevede vsechny vyrobku do stavu/useku TO_DO
+     * 2, zapta na mnozstvi na skladech, tzn. ziska si potrebne mnozstvi surovin
+     * prvni zkusi lokalni sklad pokud neni koukne do vzdaleneho
+     * 3, pokud ziska suroviny zapocne vyrobu podle casu u vyrobku a prevede ho do stavu INPROGRESS
+     * 4, nasimuluje kontrolora a checkne jestli je vyrobek ok pokud ne jde znovu do skladu
+     * pokud v pohode preda ho do stavu/useku DONE
+     * 5, vsechno se zapisuje do listu v utils ktery do dava do textfieuldu aby bylo videl co se deje
+     */
     @Override
     public void run() {
         try {
-            Utils.vyrob(Vyrobky.this);
+            Utils.zmenUsek(this);
+            Utils.addPrubehList("Vyrobek: " + this.getNazev() + " pridan do fronty na vyrobu. Momentalni usek: " + this.getMomentalniUsek());
+            Thread.sleep(2000);
+
+            Utils.kontrolaVyrLinky(this);
+
+            Utils.addPrubehList("Zacina vyroba vyrobku: " + this.getNazev() + ", bude to trvat: " + this.getDelkaVyroby() + "milisekund.");
+            Thread.sleep(this.getDelkaVyroby());
+
+            Utils.addPrubehList("Vyrobeno: " + this.getNazev());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
 
     //getters and setters
     public String getNazev() {
@@ -100,10 +105,19 @@ public class Vyrobky extends Thread {
         this.potrebneSuroviny = potrebneSuroviny;
     }
 
-    public List<Suroviny> getSurVyrobkyByNazev(final String nazevvyr){
+
+
+    public List<Suroviny> getSurVyrobkyByNazev(final String nazevvyr) {
         return getPotrebneSuroviny().stream()
                 .filter(Vyrobky -> nazevvyr.equals(Vyrobky.getNazev()))
                 .collect(Collectors.toList());
+    }
+
+    public String textForPane() {
+        StringBuilder ss = new StringBuilder();
+        ss.append(this.getNazev()).append(" -> ");
+        potrebneSuroviny.forEach(surovina -> ss.append(surovina.getNazev()).append(", "));
+        return ss.toString();
     }
 
     @Override
