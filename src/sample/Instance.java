@@ -40,7 +40,7 @@ public class Instance {
     static Sklady sklad_vzd = new Sklady("Vzdaleny sklad", TypSkladu.VZDALENY, 5000, zaznamySkladuVzd);
 
     //kontrolor
-    Pracovnik p1 = new Pracovnik("Dejv", true);
+    static Pracovnik p1 = new Pracovnik("Dejv", true);
 
     //Vyrobni linky
     static VyrobniLinka vl1 = new VyrobniLinka("Prvni", true);

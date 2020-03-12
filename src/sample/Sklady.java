@@ -15,9 +15,9 @@ public class Sklady {
         this.surovinyNaSklade = surovinyNaSklade;
     }
 
-    public ZaznamuSkladu vratZaznamSkladu(ZaznamuSkladu sur) {
+    public ZaznamuSkladu vratZaznamSkladu(Suroviny sur) {
         return surovinyNaSklade.stream()
-                .filter(dd -> dd.getSurovina().getNazev().equals(sur.getSurovina().getNazev()))
+                .filter(dd -> dd.getSurovina().getNazev().equals(sur.getNazev()))
                 .findFirst()
                 .get();
     }

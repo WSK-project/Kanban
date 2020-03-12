@@ -12,14 +12,16 @@ public class Vyrobky extends Thread {
 
     private String nazev;
     private int delkaVyroby;
+    private VyrobniLinka linka;
     private int casPotrebnyNaKontrolu;
     private Useky momentalniUsek;
     private List<Suroviny> potrebneSuroviny;
 
-    public Vyrobky(String nazev, int delkaVyroby, int casPotrebnyNaKontrolu, Useky momentalniUsek, List<Suroviny> potrebneSuroviny) {
+    public Vyrobky(String nazev, int delkaVyroby, VyrobniLinka linka, int casPotrebnyNaKontrolu, Useky momentalniUsek, List<Suroviny> potrebneSuroviny) {
         super(nazev);
         this.nazev = nazev;
         this.delkaVyroby = delkaVyroby;
+        this.linka = linka;
         this.casPotrebnyNaKontrolu = casPotrebnyNaKontrolu;
         this.momentalniUsek = momentalniUsek;
         this.potrebneSuroviny = potrebneSuroviny;
@@ -49,15 +51,16 @@ public class Vyrobky extends Thread {
     @Override
     public void run() {
         try {
+            //Zacatek kdy se vyrobky prehodi do stavy TO_DO
             Utils.zmenUsek(this);
-            Utils.addPrubehList("Vyrobek: " + this.getNazev() + " pridan do fronty na vyrobu. Momentalni usek: " + this.getMomentalniUsek());
-            Thread.sleep(2000);
 
-            Utils.kontrolaVyrLinky(this);
+            //Je to v utils aby se to dalo volat opakovane ten proces
+            Utils.runScenario(this);
 
-            Utils.addPrubehList("Zacina vyroba vyrobku: " + this.getNazev() + ", bude to trvat: " + this.getDelkaVyroby() + "milisekund.");
-            Thread.sleep(this.getDelkaVyroby());
+            //zmena do stavu DONE
+            Utils.zmenUsek(this);
 
+            //posledni zprava ze je vyrobek pripraven k preprave k zakaznikovi
             Utils.addPrubehList("Vyrobeno: " + this.getNazev());
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -79,6 +82,14 @@ public class Vyrobky extends Thread {
 
     public void setDelkaVyroby(int delkaVyroby) {
         this.delkaVyroby = delkaVyroby;
+    }
+
+    public VyrobniLinka getLinka() {
+        return linka;
+    }
+
+    public void setLinka(VyrobniLinka linka) {
+        this.linka = linka;
     }
 
     public int getCasPotrebnyNaKontrolu() {

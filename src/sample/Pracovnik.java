@@ -47,11 +47,11 @@ public class Pracovnik {
         this.jmeno = jmeno;
     }
 
-    public boolean isDostupny() {
+    public synchronized boolean isDostupny() {
         return dostupny;
     }
 
-    public void setDostupny(boolean dostupny) {
+    public synchronized void setDostupny(boolean dostupny) {
         this.dostupny = dostupny;
     }
 

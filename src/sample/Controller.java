@@ -38,7 +38,7 @@ public class Controller implements Initializable {
 
     //pro ucel logu
     @FXML
-    public TextArea txtLogis;
+    public static TextArea txtLogis;
     @FXML
     public ProgressBar procesBar;
     @FXML
@@ -55,28 +55,33 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         v1 = new Vyrobky("Vyrobek1",
-                7000,
-                4000,
+                32000,
+                null,
+                13000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_2, Instance.s_3));
         v2 = new Vyrobky("Vyrobek2",
-                20000,
-                5000,
+                21000,
+                null,
+                14000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_4, Instance.s_5));
         v3 = new Vyrobky("Vyrobek3",
-                10000,
-                4500,
+                50000,
+                null,
+                2000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_2, Instance.s_4, Instance.s_6));
         v4 = new Vyrobky("Vyrobek4",
-                2000,
-                8000,
+                20000,
+                null,
+                15000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_3, Instance.s_5, Instance.s_6));
         v5 = new Vyrobky("Vyrobek5",
-                2000,
-                2000,
+                36000,
+                null,
+                12000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_6, Instance.s_7));
 
@@ -135,6 +140,4 @@ public class Controller implements Initializable {
      */
     public void menuClose(ActionEvent actionEvent) {
     }
-
-
 }
