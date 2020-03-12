@@ -53,7 +53,6 @@ public class Vyrobky extends Thread {
     public void run() {
         Semaphore s = new Semaphore(2);
         try {
-            s.acquire();
             Utils.zmenUsek(this);
             Utils.addPrubehList("Vyrobek: " + this.getNazev() + " pridan do fronty na vyrobu. Momentalni usek: " + this.getMomentalniUsek());
             Thread.sleep(2000);
@@ -64,7 +63,6 @@ public class Vyrobky extends Thread {
             Thread.sleep(this.getDelkaVyroby());
 
             Utils.addPrubehList("Vyrobeno: " + this.getNazev());
-            s.release();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -124,11 +122,6 @@ public class Vyrobky extends Thread {
         ss.append(this.getNazev()).append(" -> ");
         potrebneSuroviny.forEach(surovina -> ss.append(surovina.getNazev()).append(", "));
         return ss.toString();
-    }
-
-    public ObservableList<Suroviny> getPotrebnesurovinyprohaha (){
-        ObservableList<Suroviny> list = FXCollections.observableArrayList(potrebneSuroviny);
-        return list;
     }
 
     @Override
