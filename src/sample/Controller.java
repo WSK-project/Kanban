@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.beans.Observable;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
@@ -47,6 +49,8 @@ public class Controller implements Initializable {
     //seznamy pro vyrobky
     @FXML
     public ListView listviewone;
+
+    private Vyrobky vyrobky;
 
     //vyrobky instance
     Vyrobky v1, v2, v3, v4, v5;
@@ -85,6 +89,8 @@ public class Controller implements Initializable {
         check3.setText(v3.textForPane());
         check4.setText(v4.textForPane());
         check5.setText(v5.textForPane());
+
+       toListView(v1);
     }
 
     /**
@@ -111,8 +117,9 @@ public class Controller implements Initializable {
         btnSTART.setDisable(true);
     }
 
-    public void toListView() {
-
+    public void toListView(Vyrobky vyrobky) {
+        ObservableList<Suroviny> vyrobkyObservableList = FXCollections.observableArrayList(vyrobky.getPotrebneSuroviny());
+        listviewone.setItems(vyrobkyObservableList);
     }
 
     /**

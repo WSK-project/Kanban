@@ -9,7 +9,6 @@ public class VyrobniLinka {
         this.dostupny = dostupny;
     }
 
-
     //getters and setters
     public String getNazev() {
         return nazev;
