@@ -36,16 +36,6 @@ public class Vyrobky extends Thread {
     }
 
     /**
-     * Metoda nahodne vygeneruju jestli je vyrobek vadny nebo ne
-     * Existuje 5% sance ze je vadny
-     */
-    public boolean jeVadny() {
-        Random rdm = new Random();
-        int result = rdm.nextInt(100);
-        return result > 95;
-    }
-
-    /**
      * Metoda pro simulaci vyroby
      * 1, prevede vsechny vyrobku do stavu/useku TO_DO
      * 2, zapta na mnozstvi na skladech, tzn. ziska si potrebne mnozstvi surovin
@@ -68,7 +58,7 @@ public class Vyrobky extends Thread {
             Utils.zmenUsek(this);
 
             //posledni zprava ze je vyrobek pripraven k preprave k zakaznikovi
-            Utils.addPrubehList("Vyrobeno: " + this.getNazev());
+            Utils.addPrubehList("Vyrobeno: " + this.getNazev() + ".");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
