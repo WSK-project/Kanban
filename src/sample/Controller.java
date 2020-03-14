@@ -1,11 +1,15 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import javafx.concurrent.*;
+
+import javax.swing.*;
 import java.util.*;
 
 public class Controller implements Initializable {
@@ -31,6 +35,13 @@ public class Controller implements Initializable {
     public TextField blv1;
     public TextField blv2;
     public TextField blv3;
+
+    @FXML
+    public TextArea logmain;
+
+    private Utils utils;
+
+    private volatile Service<String> backgroundThread;
 
     //vyrobky instance
     Vyrobky v1, v2, v3, v4, v5;
@@ -69,6 +80,9 @@ public class Controller implements Initializable {
         check3.setText(v3.textForPane());
         check4.setText(v4.textForPane());
         check5.setText(v5.textForPane());
+
+        live();
+
     }
 
     /**
@@ -82,7 +96,7 @@ public class Controller implements Initializable {
             && check4.isSelected() == false
             && check5.isSelected() == false){
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText("Musíš vybbrat alespoň jeden výrobek");
+            alert.setHeaderText("Musíš vybrat alespoň jeden výrobek");
             alert.show();
         } else {
             progress.setOpacity(1);
@@ -103,6 +117,40 @@ public class Controller implements Initializable {
             }
             btnSTART.setDisable(true);
         }
+    }
 
+    public void live(){
+
+        backgroundThread = new Service<String>(){
+            @Override
+            protected  Task<String> createTask(){
+                return new Task<String>() {
+                    StringBuilder results = new StringBuilder();
+                    @Override
+                    protected String call() throws Exception {
+                        String s = null;
+                        while(true){
+                        if(isCancelled()){
+                            break;
+                            }
+                        s = utils.getPrubehList();
+                        results.append("!: ").append(s).append("/n");
+                        Thread.sleep(100);
+                        }
+                        return results.toString();
+                    }
+                };
+            }
+        };
+        logmain.textProperty().bind(backgroundThread.valueProperty());
+        //progress.progressProperty().bind(backgroundThread.progressProperty());
+        backgroundThread.start();
+        backgroundThread.setOnCancelled(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+
+            }
+        });
+        backgroundThread.restart();
     }
 }
