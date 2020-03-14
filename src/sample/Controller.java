@@ -44,11 +44,11 @@ public class Controller implements Initializable {
 
     private volatile Service<String> backgroundThread;
 
-    public static List<String> prubehList = new ArrayList<>();
+    public static ObservableList<String> prubehList = FXCollections.observableArrayList();
 
     public String getPrubehList() {
         StringBuilder ss = new StringBuilder();
-        prubehList.forEach(ss::append);
+        prubehList.forEach(hovno -> ss.append(hovno).append("\n"));
         return ss.toString();
     }
 
@@ -95,11 +95,10 @@ public class Controller implements Initializable {
         check4.setText(v4.textForPane());
         check5.setText(v5.textForPane());
 
-        ObservableList<String> loglist = FXCollections.observableArrayList(getPrubehList());
-         loglist.addListener((ListChangeListener<String>)change ->{
+         prubehList.addListener((ListChangeListener<String>)change ->{
              while (change.next()){
                  if(change.wasAdded()){
-                     logmain.setText(loglist.toString());
+                     logmain.setText(getPrubehList());
                  }
              }
          });
