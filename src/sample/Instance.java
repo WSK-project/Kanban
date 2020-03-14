@@ -40,13 +40,6 @@ public class Instance {
     static Sklady sklad_lok = new Sklady("Lokalni sklad", TypSkladu.LOKALNI, 0, zaznamySkladuLok);
     static Sklady sklad_vzd = new Sklady("Vzdaleny sklad", TypSkladu.VZDALENY, 5000, zaznamySkladuVzd);
 
-    //kontrolor
-    static Pracovnik p1 = new Pracovnik("Dejv", true);
-
-    //Vyrobni linky
-    /*static VyrobniLinka vl1 = new VyrobniLinka("Prvni", true);
-    static VyrobniLinka vl2 = new VyrobniLinka("Druha", true);
-    static VyrobniLinka vl3 = new VyrobniLinka("treti", true);*/
-
-    static Semaphore s = new Semaphore(3);
+    static Semaphore vyrobniLinky = new Semaphore(3);
+    static Semaphore pracovnik = new Semaphore(1);
 }

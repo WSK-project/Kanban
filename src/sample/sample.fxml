@@ -28,9 +28,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Moznosti">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#menuSklad" text="Stav skladu" />
-                  <MenuItem mnemonicParsing="false" onAction="#menuStop" text="Ukoncit proces" />
-                  <MenuItem mnemonicParsing="false" onAction="#menuClose" text="Zavrit appku" />
+                  <MenuItem mnemonicParsing="false" text="Stav skladu" />
+                  <MenuItem mnemonicParsing="false" text="Ukoncit proces" />
+                  <MenuItem mnemonicParsing="false" text="Zavrit appku" />
             </items>
           </Menu>
         </menus>
