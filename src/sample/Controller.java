@@ -83,6 +83,7 @@ public class Controller implements Initializable {
             && check5.isSelected() == false){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText("Musíš vybbrat alespoň jeden výrobek");
+            alert.show();
         } else {
             progress.setOpacity(1);
             if (check1.isSelected()) {
