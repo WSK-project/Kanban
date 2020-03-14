@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.concurrent.Semaphore;
 
@@ -16,16 +18,18 @@ public class Vyrobky extends Thread {
 
     private String nazev;
     private int delkaVyroby;
-    private VyrobniLinka linka;
     private int casPotrebnyNaKontrolu;
     private Useky momentalniUsek;
     private List<Suroviny> potrebneSuroviny;
 
-    public Vyrobky(String nazev, int delkaVyroby, VyrobniLinka linka, int casPotrebnyNaKontrolu, Useky momentalniUsek, List<Suroviny> potrebneSuroviny) {
+    public Vyrobky(String nazev,
+                   int delkaVyroby,
+                   int casPotrebnyNaKontrolu,
+                   Useky momentalniUsek,
+                   List<Suroviny> potrebneSuroviny) {
         super(nazev);
         this.nazev = nazev;
         this.delkaVyroby = delkaVyroby;
-        this.linka = linka;
         this.casPotrebnyNaKontrolu = casPotrebnyNaKontrolu;
         this.momentalniUsek = momentalniUsek;
         this.potrebneSuroviny = potrebneSuroviny;
@@ -53,7 +57,6 @@ public class Vyrobky extends Thread {
      */
     @Override
     public void run() {
-        Semaphore s = new Semaphore(2);
         try {
             //Zacatek kdy se vyrobky prehodi do stavy TO_DO
             Utils.zmenUsek(this);
@@ -86,14 +89,6 @@ public class Vyrobky extends Thread {
 
     public void setDelkaVyroby(int delkaVyroby) {
         this.delkaVyroby = delkaVyroby;
-    }
-
-    public VyrobniLinka getLinka() {
-        return linka;
-    }
-
-    public void setLinka(VyrobniLinka linka) {
-        this.linka = linka;
     }
 
     public int getCasPotrebnyNaKontrolu() {

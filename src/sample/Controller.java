@@ -60,31 +60,26 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         v1 = new Vyrobky("Vyrobek1",
                 32000,
-                null,
                 13000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_2, Instance.s_3));
         v2 = new Vyrobky("Vyrobek2",
                 21000,
-                null,
                 14000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_4, Instance.s_5));
         v3 = new Vyrobky("Vyrobek3",
                 50000,
-                null,
                 2000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_2, Instance.s_4, Instance.s_6));
         v4 = new Vyrobky("Vyrobek4",
                 20000,
-                null,
                 15000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_3, Instance.s_5, Instance.s_6));
         v5 = new Vyrobky("Vyrobek5",
                 36000,
-                null,
                 12000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_6, Instance.s_7));

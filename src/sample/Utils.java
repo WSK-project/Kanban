@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Semaphore;
 
 public class Utils {
     private static String lockMn = "lockMnozstvi";
@@ -20,8 +21,13 @@ public class Utils {
      */
 
     public static List<String> prubehList = new ArrayList<>();
+    private static Semaphore s;
 
-    public static String getPrubehList() {
+    Utils(Semaphore s){
+        this.s = s;
+    }
+
+    public String getPrubehList() {
         StringBuilder ss = new StringBuilder();
         prubehList.forEach(ss::append);
         return ss.toString();
@@ -68,8 +74,8 @@ public class Utils {
         Utils.zmenUsek(vvv);
         Utils.addPrubehList("Zacina vyroba vyrobku: " + vvv.getNazev() + ", bude to trvat: " + vvv.getDelkaVyroby() + "milisekund.");
         Thread.sleep(vvv.getDelkaVyroby());
-        vvv.getLinka().setDostupny(true);
-
+        //vvv.getLinka().setDostupny(true);
+        s.release();
         //Zahaji se kontrola
         Utils.kontroloreVolimSiTebe(vvv);
         Instance.p1.setDostupny(true);
@@ -114,7 +120,10 @@ public class Utils {
         addPrubehList("Pro vyrobek: " + vvv.getNazev() + " se hleda volna vyrobni linka. V " + LocalDateTime.now());
         Random rdn = new Random();
         Thread.sleep(rdn.nextInt(5000));
-        if (Instance.vl1.isDostupny()) {
+        s.acquire();
+        addPrubehList("Pro tento výrobek "+ vvv.getNazev() + "byla nalezena vyr. linka. Počet volnych linek: "+ s.getQueueLength());
+        //addPrubehList("Vyrobek: " + vvv.getNazev() + " se bude vyrabet na vyrobni lince: " + Instance.vl1.getNazev() + ".");
+        /*if (Instance.vl1.isDostupny()) {
             Instance.vl1.setDostupny(false);
             addPrubehList("Vyrobek: " + vvv.getNazev() + " se bude vyrabet na vyrobni lince: " + Instance.vl1.getNazev() + ".");
         } else if (Instance.vl2.isDostupny()) {
@@ -127,7 +136,7 @@ public class Utils {
             addPrubehList("Pro vyrobek: " + vvv.getNazev() + " neni volna zadna vyrobni linka. Zkusi se znovu za 10s.");
             Thread.sleep(10000);
             kontrolaVyrLinky(vvv);
-        }
+        }*/
     }
 
 

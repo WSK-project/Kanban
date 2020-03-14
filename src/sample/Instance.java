@@ -2,6 +2,7 @@ package sample;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 public class Instance {
     //Suroviny do lokalniho skladu
@@ -43,7 +44,9 @@ public class Instance {
     static Pracovnik p1 = new Pracovnik("Dejv", true);
 
     //Vyrobni linky
-    static VyrobniLinka vl1 = new VyrobniLinka("Prvni", true);
+    /*static VyrobniLinka vl1 = new VyrobniLinka("Prvni", true);
     static VyrobniLinka vl2 = new VyrobniLinka("Druha", true);
-    static VyrobniLinka vl3 = new VyrobniLinka("treti", true);
+    static VyrobniLinka vl3 = new VyrobniLinka("treti", true);*/
+
+    static Semaphore s = new Semaphore(3);
 }
