@@ -21,11 +21,6 @@ public class Utils {
      */
 
     public static List<String> prubehList = new ArrayList<>();
-    private static Semaphore s;
-
-    Utils(Semaphore s){
-        this.s = s;
-    }
 
     public String getPrubehList() {
         StringBuilder ss = new StringBuilder();
@@ -75,7 +70,7 @@ public class Utils {
         Utils.addPrubehList("Zacina vyroba vyrobku: " + vvv.getNazev() + ", bude to trvat: " + vvv.getDelkaVyroby() + "milisekund.");
         Thread.sleep(vvv.getDelkaVyroby());
         //vvv.getLinka().setDostupny(true);
-        s.release();
+        Instance.s.release();
         //Zahaji se kontrola
         Utils.kontroloreVolimSiTebe(vvv);
         Instance.p1.setDostupny(true);
@@ -120,8 +115,8 @@ public class Utils {
         addPrubehList("Pro vyrobek: " + vvv.getNazev() + " se hleda volna vyrobni linka. V " + LocalDateTime.now());
         Random rdn = new Random();
         Thread.sleep(rdn.nextInt(5000));
-        s.acquire();
-        addPrubehList("Pro tento výrobek "+ vvv.getNazev() + "byla nalezena vyr. linka. Počet volnych linek: "+ s.getQueueLength());
+        Instance.s.acquire();
+        addPrubehList("Pro tento výrobek "+ vvv.getNazev() + "byla nalezena vyr. linka. Počet volnych linek: "+ Instance.s.getQueueLength());
         //addPrubehList("Vyrobek: " + vvv.getNazev() + " se bude vyrabet na vyrobni lince: " + Instance.vl1.getNazev() + ".");
         /*if (Instance.vl1.isDostupny()) {
             Instance.vl1.setDostupny(false);
