@@ -19,18 +19,7 @@ public class Utils {
     /**
      * Neco jako LOGGER at to muzeme zobrazovat na pejne co se deje... Jenom napad :D
      */
-    public static List<String> prubehList = new ArrayList<>();
 
-    public String getPrubehList() {
-        StringBuilder ss = new StringBuilder();
-        prubehList.forEach(ss::append);
-        return ss.toString();
-    }
-
-    public static void addPrubehList(String s) {
-        prubehList.add(s);
-        System.out.println(s);
-    }
 
     /**
      * Metoda ktera mi vygeneruje nahodne cislo ze zadaneho intervalu
@@ -75,7 +64,7 @@ public class Utils {
      * bohuzel se muze zacyklit ale to by ten vyrobek musel byt hodne velky smolar aby byl vzdycky vadny :D
      */
     public static void runScenario(Vyrobky vvv) throws InterruptedException {
-        Utils.addPrubehList("Výrobek: " + vvv.getNazev() + " přidán do fronty na výrobu. Momentální úsek: " + vvv.getMomentalniUsek() + ".");
+        Controller.addPrubehList("Výrobek: " + vvv.getNazev() + " přidán do fronty na výrobu. Momentální úsek: " + vvv.getMomentalniUsek() + ".");
         Thread.sleep(2000);
 
 
@@ -89,18 +78,18 @@ public class Utils {
 
         //Po uspesnem nalezeni vyrobni linky a zkontrolovani surovin se jde na vyrobu
         Utils.zmenUsek(vvv);
-        Utils.addPrubehList("Začíná výroba výrobku: " + vvv.getNazev() + ", bude to trvat: " + vvv.getDelkaVyroby() + " milisekund.");
+        Controller.addPrubehList("Začíná výroba výrobku: " + vvv.getNazev() + ", bude to trvat: " + vvv.getDelkaVyroby() + " milisekund.");
         Thread.sleep(vvv.getDelkaVyroby());
         Instance.vyrobniLinky.release();
 
         //Posledni krok a to je kontrola
         if (Utils.kontroloreVolimSiTebe(vvv)) {
-            Utils.addPrubehList("Výrobek: " + vvv.getNazev() + " je vadný, musí se vyrobit znovu.");
+            Controller.addPrubehList("Výrobek: " + vvv.getNazev() + " je vadný, musí se vyrobit znovu.");
             vvv.setMomentalniUsek(Useky.TO_DO);
             Instance.pracovnik.release();
             runScenario(vvv);
         } else {
-            Utils.addPrubehList("Výrobek " + vvv.getNazev() + " je v pořádku.");
+            Controller.addPrubehList("Výrobek " + vvv.getNazev() + " je v pořádku.");
             Instance.pracovnik.release();
         }
     }
@@ -115,20 +104,20 @@ public class Utils {
     public static void kontrolaMnoszstvi(Vyrobky vvv) throws InterruptedException {
         List<Suroviny> potrebneSuroviny = vvv.getPotrebneSuroviny();
         synchronized (lockMn) {
-            Utils.addPrubehList("Začíná kontrola surovin u výrobku: " + vvv.getNazev() + ".");
+            Controller.addPrubehList("Začíná kontrola surovin u výrobku: " + vvv.getNazev() + ".");
             for (Suroviny sur : potrebneSuroviny) {
                 ZaznamuSkladu lokZaz = Instance.sklad_lok.vratZaznamSkladu(sur);
                 ZaznamuSkladu vzdZaz = Instance.sklad_vzd.vratZaznamSkladu(sur);
                 if (lokZaz.getMnozstvi() == 100) {
-                    Utils.addPrubehList("Surovina: " + sur.getNazev() + " je na lokálním skladě.");
+                    Controller.addPrubehList("Surovina: " + sur.getNazev() + " je na lokálním skladě.");
                     lokZaz.setMnozstvi(0);
                 } else if (vzdZaz.getMnozstvi() > 0) {
-                    Utils.addPrubehList("Surovina: " + sur.getNazev() + " již není na lokálním skladě.");
+                    Controller.addPrubehList("Surovina: " + sur.getNazev() + " již není na lokálním skladě.");
                     prevozZeVzdalenehoSkladu(sur);
                     vzdZaz.setMnozstvi(vzdZaz.getMnozstvi() - KONSTANTA_PRO_ODEBIRANI_MNOZSTVI);
                 }
             }
-            Utils.addPrubehList("Všechny suroviny pro výrobek: " + vvv.getNazev() + " jsou k dispozici.");
+            Controller.addPrubehList("Všechny suroviny pro výrobek: " + vvv.getNazev() + " jsou k dispozici.");
         }
     }
 
@@ -136,9 +125,9 @@ public class Utils {
      * Metoda simuluje prevoz ze vzdaleneho skladu
      */
     public static void prevozZeVzdalenehoSkladu(Suroviny sur) throws InterruptedException {
-        addPrubehList("Byl informován vzdálený sklad o potřebě suroviny: " + sur.getNazev() + ".");
+        Controller.addPrubehList("Byl informován vzdálený sklad o potřebě suroviny: " + sur.getNazev() + ".");
         Thread.sleep(getSchwiftyBejbe(5000, 10000));
-        addPrubehList("Surovina: " + sur.getNazev() + " ze vzdáleného skladu dodána.");
+        Controller.addPrubehList("Surovina: " + sur.getNazev() + " ze vzdáleného skladu dodána.");
     }
 
     /**
@@ -146,13 +135,13 @@ public class Utils {
      * 3 licence, a pokud jiz nema a jsou vsechny linky obsazene tak vlakno ceka
      */
     public static void kontrolaVyrLinky(Vyrobky vvv) throws InterruptedException {
-        addPrubehList("Pro výrobek: " + vvv.getNazev() + " se hledá volná výrobní linka. V " + LocalDateTime.now() + ".");
+        Controller.addPrubehList("Pro výrobek: " + vvv.getNazev() + " se hledá volná výrobní linka. V " + LocalDateTime.now() + ".");
         Random rdn = new Random();
         Thread.sleep(rdn.nextInt(5000));
         Instance.vyrobniLinky.acquire();
-        addPrubehList("Pro tento výrobek " + vvv.getNazev() + "je volná výrobní linka.");
-        addPrubehList("Volne licence " + Instance.vyrobniLinky.availablePermits());
-        addPrubehList("info " + Instance.vyrobniLinky.toString());
+        Controller.addPrubehList("Pro tento výrobek " + vvv.getNazev() + "je volná výrobní linka.");
+        Controller.addPrubehList("Volne licence " + Instance.vyrobniLinky.availablePermits());
+        Controller.addPrubehList("info " + Instance.vyrobniLinky.toString());
     }
 
 
@@ -162,9 +151,9 @@ public class Utils {
     public static boolean kontroloreVolimSiTebe(Vyrobky vvv) throws InterruptedException {
         Instance.pracovnik.acquire();
 
-        Utils.addPrubehList("Dejv se přemisťuje k výrobní lince.");
+        Controller.addPrubehList("Dejv se přemisťuje k výrobní lince.");
         Thread.sleep(5000);
-        Utils.addPrubehList("Dejv stojí u výrobní linky a začíná kontrolu výrobku " + vvv.getNazev() + ".");
+        Controller.addPrubehList("Dejv stojí u výrobní linky a začíná kontrolu výrobku " + vvv.getNazev() + ".");
 
         Thread.sleep(vvv.getCasPotrebnyNaKontrolu());
 

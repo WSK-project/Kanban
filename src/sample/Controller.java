@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,9 +42,20 @@ public class Controller implements Initializable {
     @FXML
     public TextArea logmain;
 
-    private Utils utils;
-
     private volatile Service<String> backgroundThread;
+
+    public static List<String> prubehList = new ArrayList<>();
+
+    public String getPrubehList() {
+        StringBuilder ss = new StringBuilder();
+        prubehList.forEach(ss::append);
+        return ss.toString();
+    }
+
+    public static void addPrubehList(String s) {
+        prubehList.add(s);
+        System.out.println(s);
+    }
 
     //vyrobky instance
     Vyrobky v1, v2, v3, v4, v5;
@@ -81,7 +95,14 @@ public class Controller implements Initializable {
         check4.setText(v4.textForPane());
         check5.setText(v5.textForPane());
 
-        live();
+        ObservableList<String> loglist = FXCollections.observableArrayList(getPrubehList());
+         loglist.addListener((ListChangeListener<String>)change ->{
+             while (change.next()){
+                 if(change.wasAdded()){
+                     logmain.setText(loglist.toString());
+                 }
+             }
+         });
 
     }
 
@@ -117,40 +138,5 @@ public class Controller implements Initializable {
             }
             btnSTART.setDisable(true);
         }
-    }
-
-    public void live(){
-
-        backgroundThread = new Service<String>(){
-            @Override
-            protected  Task<String> createTask(){
-                return new Task<String>() {
-                    StringBuilder results = new StringBuilder();
-                    @Override
-                    protected String call() throws Exception {
-                        String s = null;
-                        while(true){
-                        if(isCancelled()){
-                            break;
-                            }
-                        s = utils.getPrubehList();
-                        results.append("!: ").append(s).append("/n");
-                        Thread.sleep(100);
-                        }
-                        return results.toString();
-                    }
-                };
-            }
-        };
-        logmain.textProperty().bind(backgroundThread.valueProperty());
-        //progress.progressProperty().bind(backgroundThread.progressProperty());
-        backgroundThread.start();
-        backgroundThread.setOnCancelled(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-
-            }
-        });
-        backgroundThread.restart();
     }
 }
