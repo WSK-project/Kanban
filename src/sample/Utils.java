@@ -139,9 +139,7 @@ public class Utils {
         Random rdn = new Random();
         Thread.sleep(rdn.nextInt(5000));
         Instance.vyrobniLinky.acquire();
-        Controller.addPrubehList("Pro tento výrobek " + vvv.getNazev() + "je volná výrobní linka.");
-        Controller.addPrubehList("Volne licence " + Instance.vyrobniLinky.availablePermits());
-        Controller.addPrubehList("info " + Instance.vyrobniLinky.toString());
+        Controller.addPrubehList("Pro tento výrobek " + vvv.getNazev() + " je volná výrobní linka.");
     }
 
 

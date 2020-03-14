@@ -15,6 +15,8 @@ import javafx.concurrent.*;
 import javax.swing.*;
 import java.util.*;
 
+import static sample.Useky.TO_DO;
+
 public class Controller implements Initializable {
     //nastaveni ktere vyrobky
     @FXML
@@ -34,17 +36,52 @@ public class Controller implements Initializable {
     @FXML
     public ProgressBar progress;
 
-
+    @FXML
     public TextField blv1;
+    @FXML
     public TextField blv2;
+    @FXML
     public TextField blv3;
 
     @FXML
     public TextArea logmain;
 
-    private volatile Service<String> backgroundThread;
-
     public static ObservableList<String> prubehList = FXCollections.observableArrayList();
+
+    @FXML
+    public TextField tdv1;
+    @FXML
+    public TextField ipv1;
+    @FXML
+    public TextField tdv2;
+    @FXML
+    public TextField tdv3;
+    @FXML
+    public TextField tdv4;
+    @FXML
+    public TextField tdv5;
+    @FXML
+    public TextField ip2;
+    @FXML
+    public TextField ipv3;
+    @FXML
+    public TextField ipv4;
+    @FXML
+    public TextField ipv5;
+    @FXML
+    public TextField dv1;
+    @FXML
+    public TextField dv2;
+    @FXML
+    public TextField dv3;
+    @FXML
+    public TextField dv4;
+    @FXML
+    public TextField dv5;
+    @FXML
+    public TextField blv4;
+    @FXML
+    public TextField blv5;
 
     public String getPrubehList() {
         StringBuilder ss = new StringBuilder();
@@ -99,6 +136,119 @@ public class Controller implements Initializable {
              while (change.next()){
                  if(change.wasAdded()){
                      logmain.setText(getPrubehList());
+                     switch (v1.getMomentalniUsek()){
+                         case TO_DO:
+                             tdv1.setOpacity(1);
+                             blv1.setOpacity(0);
+                             ipv1.setOpacity(0);
+                             dv1.setOpacity(0);
+                             break;
+                         case IN_PROGRESS:
+                             tdv1.setOpacity(0);
+                             blv1.setOpacity(0);
+                             ipv1.setOpacity(1);
+                             dv1.setOpacity(0);
+                             break;
+                         case DONE:
+                             tdv1.setOpacity(0);
+                             blv1.setOpacity(0);
+                             ipv1.setOpacity(0);
+                             dv1.setOpacity(1);
+                             break;
+                     }
+                     switch (v2.getMomentalniUsek()){
+                         case TO_DO:
+                             tdv2.setOpacity(1);
+                             blv2.setOpacity(0);
+                             ip2.setOpacity(0);
+                             dv2.setOpacity(0);
+                             break;
+                         case IN_PROGRESS:
+                             tdv2.setOpacity(0);
+                             blv2.setOpacity(0);
+                             ip2.setOpacity(1);
+                             dv2.setOpacity(0);
+                             break;
+                         case DONE:
+                             tdv2.setOpacity(0);
+                             blv2.setOpacity(0);
+                             ip2.setOpacity(0);
+                             dv2.setOpacity(1);
+                             break;
+                     }
+                     switch (v3.getMomentalniUsek()){
+                         case TO_DO:
+                             tdv3.setOpacity(1);
+                             blv3.setOpacity(0);
+                             ipv3.setOpacity(0);
+                             dv3.setOpacity(0);
+                             break;
+                         case IN_PROGRESS:
+                             tdv3.setOpacity(0);
+                             blv3.setOpacity(0);
+                             ipv3.setOpacity(1);
+                             dv3.setOpacity(0);
+                             break;
+                         case DONE:
+                             tdv3.setOpacity(0);
+                             blv3.setOpacity(0);
+                             ipv3.setOpacity(0);
+                             dv3.setOpacity(1);
+                             break;
+                     }
+                     switch (v4.getMomentalniUsek()){
+                         case TO_DO:
+                             tdv4.setOpacity(1);
+                             blv4.setOpacity(0);
+                             ipv4.setOpacity(0);
+                             dv4.setOpacity(0);
+                             break;
+                         case IN_PROGRESS:
+                             tdv4.setOpacity(0);
+                             blv4.setOpacity(0);
+                             ipv4.setOpacity(1);
+                             dv4.setOpacity(0);
+                             break;
+                         case DONE:
+                             tdv4.setOpacity(0);
+                             blv4.setOpacity(0);
+                             ipv4.setOpacity(0);
+                             dv4.setOpacity(1);
+                             break;
+                     }
+                     switch (v5.getMomentalniUsek()){
+                         case TO_DO:
+                             tdv5.setOpacity(1);
+                             blv5.setOpacity(0);
+                             ipv5.setOpacity(0);
+                             dv5.setOpacity(0);
+                             break;
+                         case IN_PROGRESS:
+                             tdv5.setOpacity(0);
+                             blv5.setOpacity(0);
+                             ipv5.setOpacity(1);
+                             dv5.setOpacity(0);
+                             break;
+                         case DONE:
+                             tdv5.setOpacity(0);
+                             blv5.setOpacity(0);
+                             ipv5.setOpacity(0);
+                             dv5.setOpacity(1);
+                             break;
+                     }
+
+                     if((v1.getMomentalniUsek() == Useky.DONE || v1.getMomentalniUsek() == Useky.BACKLOG) &&
+                             (v2.getMomentalniUsek() == Useky.DONE || v2.getMomentalniUsek() == Useky.BACKLOG) &&
+                     (v3.getMomentalniUsek() == Useky.DONE || v3.getMomentalniUsek() == Useky.BACKLOG) &&
+                     (v4.getMomentalniUsek() == Useky.DONE || v4.getMomentalniUsek() == Useky.BACKLOG) &&
+                     (v5.getMomentalniUsek() == Useky.DONE || v5.getMomentalniUsek() == Useky.BACKLOG)){
+                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                         alert.setHeaderText("Výroba dokončena");
+                         progress.setOpacity(0);
+
+                     }
+
+
                  }
              }
          });

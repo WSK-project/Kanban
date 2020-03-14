@@ -436,27 +436,27 @@
                                           </Label>
                                           <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                                           <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                          <TextField fx:id="tdv1" editable="false" opacity="0.0" GridPane.rowIndex="2">
+                                          <TextField fx:id="tdv1" editable="false" opacity="0.0" text="Výrobek1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tdv2" editable="false" opacity="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="tdv2" editable="false" opacity="0.0" text="Výrobek2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tdv3" editable="false" opacity="0.0" GridPane.rowIndex="3">
+                                          <TextField fx:id="tdv3" editable="false" opacity="0.0" text="Výrobek3" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tdv4" editable="false" opacity="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="tdv4" editable="false" opacity="0.0" text="Výrobek4" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tdv5" editable="false" maxWidth="182.0" opacity="0.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                          <TextField fx:id="tdv5" editable="false" maxWidth="182.0" opacity="0.0" text="Výrobek5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -485,27 +485,27 @@
                                           </Label>
                                           <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                                           <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                          <TextField fx:id="ipv1" editable="false" opacity="0.0" GridPane.rowIndex="2">
+                                          <TextField fx:id="ipv1" editable="false" opacity="0.0" text="Výrobek1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="ip2" editable="false" opacity="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="ip2" editable="false" opacity="0.0" text="Výrobek2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="ipv3" editable="false" opacity="0.0" GridPane.rowIndex="3">
+                                          <TextField fx:id="ipv3" editable="false" opacity="0.0" text="Výrobek3" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="ipv4" editable="false" opacity="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="ipv4" editable="false" opacity="0.0" text="Výrobek4" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="ipv5" editable="false" maxWidth="182.0" opacity="0.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                          <TextField fx:id="ipv5" editable="false" maxWidth="182.0" opacity="0.0" text="Výrobek5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -534,27 +534,27 @@
                                           </Label>
                                           <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                                           <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                          <TextField fx:id="dv1" editable="false" opacity="0.0" GridPane.rowIndex="2">
+                                          <TextField fx:id="dv1" editable="false" opacity="0.0" text="Výrobek1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="dv3" editable="false" opacity="0.0" GridPane.rowIndex="3">
+                                          <TextField fx:id="dv3" editable="false" opacity="0.0" text="Výrobek3" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="dv2" editable="false" opacity="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="dv2" editable="false" opacity="0.0" text="Výrobek2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="dv4" editable="false" opacity="0.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="dv4" editable="false" opacity="0.0" text="Výrobek4" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="dv5" editable="false" maxWidth="182.0" opacity="0.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                          <TextField fx:id="dv5" editable="false" maxWidth="182.0" opacity="0.0" text="Výrobek5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                                        </children>
                                     </GridPane>
                                  </children>
