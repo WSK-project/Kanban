@@ -2,19 +2,26 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="899.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
@@ -29,7 +36,121 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <BorderPane prefHeight="864.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <BorderPane prefHeight="864.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <center>
+                                          <VBox prefHeight="864.0" prefWidth="414.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <AnchorPane prefHeight="280.0" prefWidth="455.0">
+                                                   <children>
+                                                      <GridPane layoutX="39.0" layoutY="85.0" prefHeight="280.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Label text="Nastavení" textFill="#21bec6" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                                                               <font>
+                                                                  <Font size="32.0" />
+                                                               </font>
+                                                               <GridPane.margin>
+                                                                  <Insets top="5.0" />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <CheckBox fx:id="check1" mnemonicParsing="false" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="50.0" />
+                                                               </GridPane.margin>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="check2" mnemonicParsing="false" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="50.0" />
+                                                               </GridPane.margin>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="check3" mnemonicParsing="false" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="50.0" />
+                                                               </GridPane.margin>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="check4" mnemonicParsing="false" GridPane.rowIndex="4">
+                                                               <GridPane.margin>
+                                                                  <Insets left="50.0" />
+                                                               </GridPane.margin>
+                                                            </CheckBox>
+                                                            <CheckBox fx:id="check5" mnemonicParsing="false" GridPane.rowIndex="5">
+                                                               <GridPane.margin>
+                                                                  <Insets left="50.0" />
+                                                               </GridPane.margin>
+                                                            </CheckBox>
+                                                            <Separator prefWidth="200.0" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="83.0" prefWidth="455.0">
+                                                   <children>
+                                                      <GridPane layoutX="36.0" layoutY="-7.0" prefHeight="83.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Button mnemonicParsing="false" onAction="#makeSomeNoise" style="-fx-background-color: green;" text="Start Process" GridPane.halignment="CENTER">
+                                                               <font>
+                                                                  <Font size="31.0" />
+                                                               </font>
+                                                            </Button>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <Separator prefWidth="200.0" />
+                                                <AnchorPane prefHeight="120.0" prefWidth="455.0">
+                                                   <children>
+                                                      <GridPane layoutX="76.0" layoutY="15.0" prefHeight="120.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                            <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <ProgressBar fx:id="progress" prefHeight="44.0" prefWidth="233.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                            <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                                                            <Label text="Stav of Process" textFill="#ae5f42" GridPane.halignment="CENTER">
+                                                               <font>
+                                                                  <Font size="22.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets top="30.0" />
+                                                   </VBox.margin>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="340.0" prefWidth="455.0">
+                                                   <children>
+                                                      <TextArea layoutX="35.0" layoutY="79.0" prefHeight="340.0" prefWidth="455.0" text="Návod:&#10;&#10;1. Vyber 1-5 výrobků &#10;2. Zmačkni  Start Process&#10;3. Přejdi na KanbanBoard&#10;4. Užij si zábavu :)&#10;5. Po skončení se můžeš podívat do Logu.&#10;&#10;6. Konec zábavy&#10;7. Brzy naviděnou." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </AnchorPane>
+                                             </children>
+                                          </VBox>
+                                       </center>
+                                    </BorderPane>
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -38,21 +159,188 @@
                                        <center>
                                           <Accordion BorderPane.alignment="CENTER">
                                             <panes>
-                                              <TitledPane animated="false" text="untitled 1">
+                                              <TitledPane animated="false" text="Výrobek 1">
                                                 <content>
-                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <BorderPane layoutX="132.0" layoutY="86.0" prefHeight="728.0" prefWidth="1074.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <center>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <TextArea layoutX="14.0" layoutY="14.0" prefHeight="579.0" prefWidth="1026.0" text="Suroviny pro výrobek 1:&#10;&#10;1. Surovina1&#10;2. Surovina2&#10;3. Surovina3&#10;&#10;Popis výrobku:&#10;&#10;rasista | gauč | optimista | machr | sluha | seveřan | šroubovák | ryba | panika | přitažlivost | moč | &#10;batman | sféra | konvička | konzole | prstoklad | pirát | zlom | guláš | školné | legíny | půda | lepidlo |&#10;střep | půlitr | čelo | peřina | sněhulák | křen | tlumič | kýč | sklíčko | manželství | aura | ocet | elektrika | císař | kurýr | &#10;hovor | vlas | dotaz | svítání | kružítko | zatmění | slabikář | trasa | hamburger | vousy | vzpomínka | rachot | hračka | poklička | &#10;laboratoř | gril | dýmovnice | produkce | četa | pozadí | ubytovna | kabát | trojúhelník | cibule | nemčina | drama | samota | obočí | jehličnan | &#10;synchronizace | dražba | dokument | koláček | magazín | šílenost | paměť | sedačka | bluma | svoboda | mimoň | pusa | uzda | kouzelník | fyzik | &#10;slon |  výuka | rosa | bok | koupaliště | růženec | panelák | čekárna | hlína | mol | epocha | minerál | smysl | horoskop | zeměkoule | lízátko | dřevo | satan&#10;&#10;" />
+                                                                     </children></AnchorPane>
+                                                               </center>
+                                                               <top>
+                                                                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <ImageView fitHeight="103.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@gg.png" />
+                                                                           </image></ImageView>
+                                                                        <AnchorPane prefHeight="103.0" prefWidth="972.0">
+                                                                           <children>
+                                                                              <Label layoutX="32.0" layoutY="20.0" text="Výrobek 1">
+                                                                                 <font>
+                                                                                    <Font size="51.0" />
+                                                                                 </font>
+                                                                              </Label>
+                                                                           </children></AnchorPane>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </top>
+                                                            </BorderPane>
+                                                         </children>
+                                                      </AnchorPane>
                                                 </content>
                                               </TitledPane>
-                                              <TitledPane animated="false" text="untitled 2">
-                                                <content>
-                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                </content>
+                                              <TitledPane animated="false" text="Výrobek 2">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <BorderPane layoutX="132.0" layoutY="86.0" prefHeight="728.0" prefWidth="1074.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <center>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <TextArea layoutX="14.0" layoutY="14.0" prefHeight="579.0" prefWidth="1026.0" text="Suroviny pro výrobek 2:&#10;&#10;1. Surovina1&#10;2. Surovina4&#10;3. Surovina5&#10;&#10;Popis výrobku:&#10;&#10;rasista | gauč | optimista | machr | sluha | seveřan | šroubovák | ryba | panika | přitažlivost | moč | &#10;batman | sféra | konvička | konzole | prstoklad | pirát | zlom | guláš | školné | legíny | půda | lepidlo |&#10;střep | půlitr | čelo | peřina | sněhulák | křen | tlumič | kýč | sklíčko | manželství | aura | ocet | elektrika | císař | kurýr | &#10;hovor | vlas | dotaz | svítání | kružítko | zatmění | slabikář | trasa | hamburger | vousy | vzpomínka | rachot | hračka | poklička | &#10;laboratoř | gril | dýmovnice | produkce | četa | pozadí | ubytovna | kabát | trojúhelník | cibule | nemčina | drama | samota | obočí | jehličnan | &#10;synchronizace | dražba | dokument | koláček | magazín | šílenost | paměť | sedačka | bluma | svoboda | mimoň | pusa | uzda | kouzelník | fyzik | &#10;slon |  výuka | rosa | bok | koupaliště | růženec | panelák | čekárna | hlína | mol | epocha | minerál | smysl | horoskop | zeměkoule | lízátko | dřevo | satan&#10;&#10;" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </center>
+                                                               <top>
+                                                                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <ImageView fitHeight="103.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@gg.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                        <AnchorPane prefHeight="103.0" prefWidth="972.0">
+                                                                           <children>
+                                                                              <Label layoutX="32.0" layoutY="20.0" text="Výrobek 2">
+                                                                                 <font>
+                                                                                    <Font size="51.0" />
+                                                                                 </font>
+                                                                              </Label>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </top>
+                                                            </BorderPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
                                               </TitledPane>
-                                              <TitledPane animated="false" text="untitled 3">
-                                                <content>
-                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                </content>
+                                              <TitledPane animated="false" text="Výrobek 3">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <BorderPane layoutX="132.0" layoutY="86.0" prefHeight="728.0" prefWidth="1074.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <center>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <TextArea layoutX="14.0" layoutY="14.0" prefHeight="579.0" prefWidth="1026.0" text="Suroviny pro výrobek 3:&#10;&#10;1. Surovina2&#10;2. Surovina4&#10;3. Surovina6&#10;&#10;Popis výrobku:&#10;&#10;rasista | gauč | optimista | machr | sluha | seveřan | šroubovák | ryba | panika | přitažlivost | moč | &#10;batman | sféra | konvička | konzole | prstoklad | pirát | zlom | guláš | školné | legíny | půda | lepidlo |&#10;střep | půlitr | čelo | peřina | sněhulák | křen | tlumič | kýč | sklíčko | manželství | aura | ocet | elektrika | císař | kurýr | &#10;hovor | vlas | dotaz | svítání | kružítko | zatmění | slabikář | trasa | hamburger | vousy | vzpomínka | rachot | hračka | poklička | &#10;laboratoř | gril | dýmovnice | produkce | četa | pozadí | ubytovna | kabát | trojúhelník | cibule | nemčina | drama | samota | obočí | jehličnan | &#10;synchronizace | dražba | dokument | koláček | magazín | šílenost | paměť | sedačka | bluma | svoboda | mimoň | pusa | uzda | kouzelník | fyzik | &#10;slon |  výuka | rosa | bok | koupaliště | růženec | panelák | čekárna | hlína | mol | epocha | minerál | smysl | horoskop | zeměkoule | lízátko | dřevo | satan&#10;&#10;" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </center>
+                                                               <top>
+                                                                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <ImageView fitHeight="103.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@gg.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                        <AnchorPane prefHeight="103.0" prefWidth="972.0">
+                                                                           <children>
+                                                                              <Label layoutX="32.0" layoutY="20.0" text="Výrobek 3">
+                                                                                 <font>
+                                                                                    <Font size="51.0" />
+                                                                                 </font>
+                                                                              </Label>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </top>
+                                                            </BorderPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
                                               </TitledPane>
+                                                <TitledPane animated="false" text="Výrobek 4">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <BorderPane layoutX="132.0" layoutY="86.0" prefHeight="728.0" prefWidth="1074.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <center>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <TextArea layoutX="14.0" layoutY="14.0" prefHeight="579.0" prefWidth="1026.0" text="Suroviny pro výrobek 4:&#10;&#10;1. Surovina3&#10;2. Surovina5&#10;3. Surovina6&#10;&#10;Popis výrobku:&#10;&#10;rasista | gauč | optimista | machr | sluha | seveřan | šroubovák | ryba | panika | přitažlivost | moč | &#10;batman | sféra | konvička | konzole | prstoklad | pirát | zlom | guláš | školné | legíny | půda | lepidlo |&#10;střep | půlitr | čelo | peřina | sněhulák | křen | tlumič | kýč | sklíčko | manželství | aura | ocet | elektrika | císař | kurýr | &#10;hovor | vlas | dotaz | svítání | kružítko | zatmění | slabikář | trasa | hamburger | vousy | vzpomínka | rachot | hračka | poklička | &#10;laboratoř | gril | dýmovnice | produkce | četa | pozadí | ubytovna | kabát | trojúhelník | cibule | nemčina | drama | samota | obočí | jehličnan | &#10;synchronizace | dražba | dokument | koláček | magazín | šílenost | paměť | sedačka | bluma | svoboda | mimoň | pusa | uzda | kouzelník | fyzik | &#10;slon |  výuka | rosa | bok | koupaliště | růženec | panelák | čekárna | hlína | mol | epocha | minerál | smysl | horoskop | zeměkoule | lízátko | dřevo | satan&#10;&#10;" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </center>
+                                                               <top>
+                                                                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <ImageView fitHeight="103.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@gg.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                        <AnchorPane prefHeight="103.0" prefWidth="972.0">
+                                                                           <children>
+                                                                              <Label layoutX="32.0" layoutY="20.0" text="Výrobek 4">
+                                                                                 <font>
+                                                                                    <Font size="51.0" />
+                                                                                 </font>
+                                                                              </Label>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </top>
+                                                            </BorderPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" text="Výrobek 5">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <BorderPane layoutX="132.0" layoutY="86.0" prefHeight="728.0" prefWidth="1074.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <center>
+                                                                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <TextArea layoutX="14.0" layoutY="14.0" prefHeight="579.0" prefWidth="1026.0" text="Suroviny pro výrobek 5:&#10;&#10;1. Surovina1&#10;2. Surovina6&#10;3. Surovina7&#10;&#10;Popis výrobku:&#10;&#10;rasista | gauč | optimista | machr | sluha | seveřan | šroubovák | ryba | panika | přitažlivost | moč | &#10;batman | sféra | konvička | konzole | prstoklad | pirát | zlom | guláš | školné | legíny | půda | lepidlo |&#10;střep | půlitr | čelo | peřina | sněhulák | křen | tlumič | kýč | sklíčko | manželství | aura | ocet | elektrika | císař | kurýr | &#10;hovor | vlas | dotaz | svítání | kružítko | zatmění | slabikář | trasa | hamburger | vousy | vzpomínka | rachot | hračka | poklička | &#10;laboratoř | gril | dýmovnice | produkce | četa | pozadí | ubytovna | kabát | trojúhelník | cibule | nemčina | drama | samota | obočí | jehličnan | &#10;synchronizace | dražba | dokument | koláček | magazín | šílenost | paměť | sedačka | bluma | svoboda | mimoň | pusa | uzda | kouzelník | fyzik | &#10;slon |  výuka | rosa | bok | koupaliště | růženec | panelák | čekárna | hlína | mol | epocha | minerál | smysl | horoskop | zeměkoule | lízátko | dřevo | satan&#10;&#10;" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </center>
+                                                               <top>
+                                                                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                                     <children>
+                                                                        <ImageView fitHeight="103.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@gg.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                        <AnchorPane prefHeight="103.0" prefWidth="972.0">
+                                                                           <children>
+                                                                              <Label layoutX="32.0" layoutY="20.0" text="Výrobek 5">
+                                                                                 <font>
+                                                                                    <Font size="51.0" />
+                                                                                 </font>
+                                                                              </Label>
+                                                                           </children>
+                                                                        </AnchorPane>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </top>
+                                                            </BorderPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </TitledPane>
                                             </panes>
                                           </Accordion>
                                        </center>
@@ -290,11 +578,8 @@
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="78.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="164.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="347.0" minHeight="10.0" prefHeight="341.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Výrobek1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
@@ -302,8 +587,13 @@
                                                       <Font name="Avenir Oblique" size="37.0" />
                                                    </font>
                                                 </Label>
-                                                <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                                <Separator prefWidth="200.0" GridPane.valignment="BOTTOM" />
+                                                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                                                <TextArea fx:id="area1" prefHeight="200.0" prefWidth="200.0" promptText="log pro výrobek 1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                   </GridPane.margin>
+                                                </TextArea>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -316,11 +606,8 @@
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="78.0" minHeight="2.0" prefHeight="2.0" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="162.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="347.0" minHeight="10.0" prefHeight="341.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Výrobek2" GridPane.columnSpan="2" GridPane.halignment="CENTER">
@@ -328,25 +615,27 @@
                                                       <Font name="Avenir Oblique" size="37.0" />
                                                    </font>
                                                 </Label>
-                                                <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                                <Separator prefWidth="200.0" GridPane.valignment="BOTTOM" />
+                                                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                                                <TextArea fx:id="area2" prefHeight="200.0" prefWidth="200.0" promptText="log pro výrobek 2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                   </GridPane.margin>
+                                                </TextArea>
                                              </children>
                                           </GridPane>
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <GridPane prefHeight="413.0" prefWidth="310.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <GridPane layoutX="1.0" layoutY="4.0" prefHeight="413.0" prefWidth="308.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columnConstraints>
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="78.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="159.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="244.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="343.0" minHeight="10.0" prefHeight="341.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Výrobek3" GridPane.columnSpan="2" GridPane.halignment="CENTER">
@@ -354,25 +643,27 @@
                                                       <Font name="Avenir Oblique" size="37.0" />
                                                    </font>
                                                 </Label>
-                                                <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                                <Separator prefWidth="200.0" GridPane.valignment="BOTTOM" />
+                                                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                                                <TextArea fx:id="area3" prefHeight="200.0" prefWidth="200.0" promptText="log pro výrobek 3" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                   </GridPane.margin>
+                                                </TextArea>
                                              </children>
                                           </GridPane>
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <GridPane prefHeight="413.0" prefWidth="310.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <GridPane prefHeight="413.0" prefWidth="308.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columnConstraints>
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="78.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="164.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="329.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="349.0" minHeight="0.0" prefHeight="344.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Výrobek4" GridPane.columnSpan="2" GridPane.halignment="CENTER">
@@ -382,6 +673,11 @@
                                                 </Label>
                                                 <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                                                 <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                                <TextArea fx:id="area4" prefHeight="200.0" prefWidth="200.0" promptText="log pro výrobek 4" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="3.0" left="3.0" right="3.0" top="6.0" />
+                                                   </GridPane.margin>
+                                                </TextArea>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -394,11 +690,8 @@
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="78.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="164.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="202.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="345.0" minHeight="10.0" prefHeight="341.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Label text="Výrobek5" GridPane.columnSpan="2" GridPane.halignment="CENTER">
@@ -406,8 +699,13 @@
                                                       <Font name="Avenir Oblique" size="37.0" />
                                                    </font>
                                                 </Label>
-                                                <Separator prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                                <Separator prefWidth="200.0" GridPane.valignment="BOTTOM" />
+                                                <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                                                <TextArea fx:id="area5" prefHeight="200.0" prefWidth="200.0" promptText="log pro výrobek 5" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                   </GridPane.margin>
+                                                </TextArea>
                                              </children>
                                           </GridPane>
                                        </children>
@@ -422,7 +720,11 @@
           </Tab>
             <Tab text="Log">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="logmain" layoutX="662.0" layoutY="477.0" prefHeight="866.0" prefWidth="1541.0" promptText="log" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
         </tabs>
