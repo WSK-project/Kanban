@@ -24,6 +24,14 @@ public class Controller implements Initializable {
     @FXML
     public Button btnSTART;
 
+    @FXML
+    public ProgressBar progress;
+
+
+    public TextField blv1;
+    public TextField blv2;
+    public TextField blv3;
+
     //vyrobky instance
     Vyrobky v1, v2, v3, v4, v5;
 
@@ -69,21 +77,31 @@ public class Controller implements Initializable {
      * @param actionEvent
      */
     public void makeSomeNoise(ActionEvent actionEvent) {
-        if (check1.isSelected()) {
-            v1.start();
+        if (check1.isSelected() == false && check2.isSelected() == false
+            && check3.isSelected() == false
+            && check4.isSelected() == false
+            && check5.isSelected() == false){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Musíš vybbrat alespoň jeden výrobek");
+        } else {
+            progress.setOpacity(1);
+            if (check1.isSelected()) {
+                v1.start();
+            }
+            if (check2.isSelected()) {
+                v2.start();
+            }
+            if (check3.isSelected()) {
+                v3.start();
+            }
+            if (check4.isSelected()) {
+                v4.start();
+            }
+            if (check5.isSelected()) {
+                v5.start();
+            }
+            btnSTART.setDisable(true);
         }
-        if (check2.isSelected()) {
-            v2.start();
-        }
-        if (check3.isSelected()) {
-            v3.start();
-        }
-        if (check4.isSelected()) {
-            v4.start();
-        }
-        if (check5.isSelected()) {
-            v5.start();
-        }
-        btnSTART.setDisable(true);
+
     }
 }
