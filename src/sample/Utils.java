@@ -8,18 +8,17 @@ import java.util.concurrent.Semaphore;
 
 public class Utils {
     private static String lockMn = "lockMnozstvi";
+
     /**
      * neni zadane ze se musi odebirat nejak zvlastne,
      * takze kazdy vyrobek bude mit spotrebu dane suroviny ve vysi 100
      * cimz docilime i toho ze se bude volat vzdaleny sklad
      */
-
     public static final int KONSTANTA_PRO_ODEBIRANI_MNOZSTVI = 100;
 
     /**
      * Neco jako LOGGER at to muzeme zobrazovat na pejne co se deje... Jenom napad :D
      */
-
     public static List<String> prubehList = new ArrayList<>();
 
     public String getPrubehList() {
@@ -31,6 +30,14 @@ public class Utils {
     public static void addPrubehList(String s) {
         prubehList.add(s);
         System.out.println(s);
+    }
+
+    /**
+     * Metoda ktera mi vygeneruje nahodne cislo ze zadaneho intervalu
+     */
+    public static int getSchwiftyBejbe(int min, int max) {
+        Random r = new Random();
+        return r.nextInt((max - min) + 1000) + min;
     }
 
     /**
@@ -59,8 +66,10 @@ public class Utils {
     }
 
 
-    //vyrobni proces
 
+
+    
+    //vyrobni proces
     /**
      * Hlavni metoda ktera simuluje RUN pro vsechny vyrobky
      * bohuzel se muze zacyklit ale to by ten vyrobek musel byt hodne velky smolar aby byl vzdycky vadny :D
@@ -128,9 +137,7 @@ public class Utils {
      */
     public static void prevozZeVzdalenehoSkladu(Suroviny sur) throws InterruptedException {
         addPrubehList("Byl informován vzdálený sklad o potřebě suroviny: " + sur.getNazev() + ".");
-        Random rdm = new Random();
-        int result = rdm.nextInt(10000);
-        Thread.sleep(result + 10000);
+        Thread.sleep(getSchwiftyBejbe(5000, 10000));
         addPrubehList("Surovina: " + sur.getNazev() + " ze vzdáleného skladu dodána.");
     }
 

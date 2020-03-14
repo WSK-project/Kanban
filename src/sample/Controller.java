@@ -31,27 +31,27 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         v1 = new Vyrobky("Vyrobek1",
-                32000,
+                Utils.getSchwiftyBejbe(30000, 35000),
                 13000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_2, Instance.s_3));
         v2 = new Vyrobky("Vyrobek2",
-                21000,
+                Utils.getSchwiftyBejbe(20000, 25000),
                 14000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_4, Instance.s_5));
         v3 = new Vyrobky("Vyrobek3",
-                50000,
+                Utils.getSchwiftyBejbe(45000, 50000),
                 2000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_2, Instance.s_4, Instance.s_6));
         v4 = new Vyrobky("Vyrobek4",
-                20000,
+                Utils.getSchwiftyBejbe(23000, 30000),
                 15000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_3, Instance.s_5, Instance.s_6));
         v5 = new Vyrobky("Vyrobek5",
-                36000,
+                Utils.getSchwiftyBejbe(36000, 41000),
                 12000,
                 Useky.BACKLOG,
                 Arrays.asList(Instance.s_1, Instance.s_6, Instance.s_7));
