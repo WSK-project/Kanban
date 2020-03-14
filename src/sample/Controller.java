@@ -4,18 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import javafx.concurrent.*;
 
-import javax.swing.*;
 import java.util.*;
 
-import static sample.Useky.TO_DO;
 
 public class Controller implements Initializable {
     //nastaveni ktere vyrobky
@@ -89,7 +85,7 @@ public class Controller implements Initializable {
         return ss.toString();
     }
 
-    public static void addPrubehList(String s) {
+    public static synchronized void addPrubehList(String s) {
         prubehList.add(s);
         System.out.println(s);
     }
@@ -245,10 +241,8 @@ public class Controller implements Initializable {
                          Alert alert = new Alert(Alert.AlertType.INFORMATION);
                          alert.setHeaderText("Výroba dokončena");
                          progress.setOpacity(0);
-
+                         alert.show();
                      }
-
-
                  }
              }
          });
