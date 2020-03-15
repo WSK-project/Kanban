@@ -21,13 +21,13 @@ David Jamárik & Ladislav Volný
 ![alt text](https://user-images.githubusercontent.com/55660903/76705571-636d3e80-66e1-11ea-89aa-360f6bf39d25.jpg)
 
 ## Installation
-a. clone git file to client (sourcetree).
-b. open InetelliJ IDEA (NetBEans, Eclipse)
-c. Import project from local directory.
-d. EDIT configuration
+- clone git file to client (sourcetree).
+- open InetelliJ IDEA (NetBEans, Eclipse)
+- Import project from local directory.
+- EDIT configuration
   - Main class: sample.Main
   - VM options: --module-path ${PATH_TO_FX} --add-modules=javafx.controls,javafx.fxml
   - USE classpath of Module: Kanban
   - JRE: Default (10-SDK of Kanban module)
-c. run project
+- run project
 
