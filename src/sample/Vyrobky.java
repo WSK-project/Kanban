@@ -58,7 +58,7 @@ public class Vyrobky extends Thread {
             Utils.zmenUsek(this);
 
             //posledni zprava ze je vyrobek pripraven k preprave k zakaznikovi
-            Controller.addPrubehList("Vyrobeno: " + this.getNazev() + ".");
+            Controller.addPrubehList("############### Vyrobeno: " + this.getNazev() + ".");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

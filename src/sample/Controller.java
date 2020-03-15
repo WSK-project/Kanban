@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -10,6 +11,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 
@@ -78,6 +80,10 @@ public class Controller implements Initializable {
     public TextField blv4;
     @FXML
     public TextField blv5;
+    @FXML
+    public Accordion accordPane;
+    @FXML
+    public TitledPane firstAccordPane;
 
     public String getPrubehList() {
         StringBuilder ss = new StringBuilder();
@@ -86,16 +92,19 @@ public class Controller implements Initializable {
     }
 
     public static synchronized void addPrubehList(String s) {
-        prubehList.add(s);
-        System.out.println(s);
+        prubehList.add(0,LocalDateTime.now().toLocalDate() + " - " + LocalDateTime.now().toLocalTime() + " -> " + s);
     }
 
     //vyrobky instance
     Vyrobky v1, v2, v3, v4, v5;
 
+    //pomocne pocitadlo
+    private long pocitejMne = 0;
+
     //co se stane pred spustenim
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        accordPane.setExpandedPane(firstAccordPane);
         v1 = new Vyrobky("Vyrobek1",
                 Utils.getSchwiftyBejbe(30000, 35000),
                 13000,
@@ -132,117 +141,25 @@ public class Controller implements Initializable {
              while (change.next()){
                  if(change.wasAdded()){
                      logmain.setText(getPrubehList());
-                     switch (v1.getMomentalniUsek()){
-                         case TO_DO:
-                             tdv1.setOpacity(1);
-                             blv1.setOpacity(0);
-                             ipv1.setOpacity(0);
-                             dv1.setOpacity(0);
-                             break;
-                         case IN_PROGRESS:
-                             tdv1.setOpacity(0);
-                             blv1.setOpacity(0);
-                             ipv1.setOpacity(1);
-                             dv1.setOpacity(0);
-                             break;
-                         case DONE:
-                             tdv1.setOpacity(0);
-                             blv1.setOpacity(0);
-                             ipv1.setOpacity(0);
-                             dv1.setOpacity(1);
-                             break;
-                     }
-                     switch (v2.getMomentalniUsek()){
-                         case TO_DO:
-                             tdv2.setOpacity(1);
-                             blv2.setOpacity(0);
-                             ip2.setOpacity(0);
-                             dv2.setOpacity(0);
-                             break;
-                         case IN_PROGRESS:
-                             tdv2.setOpacity(0);
-                             blv2.setOpacity(0);
-                             ip2.setOpacity(1);
-                             dv2.setOpacity(0);
-                             break;
-                         case DONE:
-                             tdv2.setOpacity(0);
-                             blv2.setOpacity(0);
-                             ip2.setOpacity(0);
-                             dv2.setOpacity(1);
-                             break;
-                     }
-                     switch (v3.getMomentalniUsek()){
-                         case TO_DO:
-                             tdv3.setOpacity(1);
-                             blv3.setOpacity(0);
-                             ipv3.setOpacity(0);
-                             dv3.setOpacity(0);
-                             break;
-                         case IN_PROGRESS:
-                             tdv3.setOpacity(0);
-                             blv3.setOpacity(0);
-                             ipv3.setOpacity(1);
-                             dv3.setOpacity(0);
-                             break;
-                         case DONE:
-                             tdv3.setOpacity(0);
-                             blv3.setOpacity(0);
-                             ipv3.setOpacity(0);
-                             dv3.setOpacity(1);
-                             break;
-                     }
-                     switch (v4.getMomentalniUsek()){
-                         case TO_DO:
-                             tdv4.setOpacity(1);
-                             blv4.setOpacity(0);
-                             ipv4.setOpacity(0);
-                             dv4.setOpacity(0);
-                             break;
-                         case IN_PROGRESS:
-                             tdv4.setOpacity(0);
-                             blv4.setOpacity(0);
-                             ipv4.setOpacity(1);
-                             dv4.setOpacity(0);
-                             break;
-                         case DONE:
-                             tdv4.setOpacity(0);
-                             blv4.setOpacity(0);
-                             ipv4.setOpacity(0);
-                             dv4.setOpacity(1);
-                             break;
-                     }
-                     switch (v5.getMomentalniUsek()){
-                         case TO_DO:
-                             tdv5.setOpacity(1);
-                             blv5.setOpacity(0);
-                             ipv5.setOpacity(0);
-                             dv5.setOpacity(0);
-                             break;
-                         case IN_PROGRESS:
-                             tdv5.setOpacity(0);
-                             blv5.setOpacity(0);
-                             ipv5.setOpacity(1);
-                             dv5.setOpacity(0);
-                             break;
-                         case DONE:
-                             tdv5.setOpacity(0);
-                             blv5.setOpacity(0);
-                             ipv5.setOpacity(0);
-                             dv5.setOpacity(1);
-                             break;
+
+                     pomocnicek(v1, tdv1, blv1, ipv1, dv1);
+                     pomocnicek(v2, tdv2, blv2, ip2, dv2);
+                     pomocnicek(v3, tdv3, blv3, ipv3, dv3);
+                     pomocnicek(v4, tdv4, blv4, ipv4, dv4);
+                     pomocnicek(v5, tdv5, blv5, ipv5, dv5);
+
+                     long ciselko = prubehList.stream()
+                             .filter(ss -> ss.contains("###############"))
+                             .count();
+                     if(pocitejMne == ciselko) {
+                         Platform.runLater(() -> {
+                             progress.setOpacity(0);
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setHeaderText("Výroba dokončena.");
+                             alert.show();
+                         });
                      }
 
-                     if((v1.getMomentalniUsek() == Useky.DONE || v1.getMomentalniUsek() == Useky.BACKLOG) &&
-                             (v2.getMomentalniUsek() == Useky.DONE || v2.getMomentalniUsek() == Useky.BACKLOG) &&
-                     (v3.getMomentalniUsek() == Useky.DONE || v3.getMomentalniUsek() == Useky.BACKLOG) &&
-                     (v4.getMomentalniUsek() == Useky.DONE || v4.getMomentalniUsek() == Useky.BACKLOG) &&
-                     (v5.getMomentalniUsek() == Useky.DONE || v5.getMomentalniUsek() == Useky.BACKLOG)){
-                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                         alert.setHeaderText("Výroba dokončena");
-                         progress.setOpacity(0);
-                         alert.show();
-                     }
                  }
              }
          });
@@ -255,31 +172,60 @@ public class Controller implements Initializable {
      * @param actionEvent
      */
     public void makeSomeNoise(ActionEvent actionEvent) {
-        if (check1.isSelected() == false && check2.isSelected() == false
-            && check3.isSelected() == false
-            && check4.isSelected() == false
-            && check5.isSelected() == false){
+        if (!check1.isSelected()
+                && !check2.isSelected()
+                && !check3.isSelected()
+                && !check4.isSelected()
+                && !check5.isSelected()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText("Musíš vybrat alespoň jeden výrobek");
             alert.show();
         } else {
             progress.setOpacity(1);
             if (check1.isSelected()) {
+                pocitejMne += 1;
                 v1.start();
             }
             if (check2.isSelected()) {
+                pocitejMne += 1;
                 v2.start();
             }
             if (check3.isSelected()) {
+                pocitejMne += 1;
                 v3.start();
             }
             if (check4.isSelected()) {
+                pocitejMne += 1;
                 v4.start();
             }
             if (check5.isSelected()) {
+                pocitejMne += 1;
                 v5.start();
             }
             btnSTART.setDisable(true);
+        }
+    }
+
+    public void pomocnicek(Vyrobky vvv, TextField jedna, TextField dva, TextField tri, TextField ctyri) {
+        switch (vvv.getMomentalniUsek()){
+            case TO_DO:
+                jedna.setOpacity(1);
+                dva.setOpacity(0);
+                tri.setOpacity(0);
+                ctyri.setOpacity(0);
+                break;
+            case IN_PROGRESS:
+                jedna.setOpacity(0);
+                dva.setOpacity(0);
+                tri.setOpacity(1);
+                ctyri.setOpacity(0);
+                break;
+            case DONE:
+                jedna.setOpacity(0);
+                dva.setOpacity(0);
+                tri.setOpacity(0);
+                ctyri.setOpacity(1);
+                break;
         }
     }
 }

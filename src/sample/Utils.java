@@ -135,7 +135,7 @@ public class Utils {
      * 3 licence, a pokud jiz nema a jsou vsechny linky obsazene tak vlakno ceka
      */
     public static void kontrolaVyrLinky(Vyrobky vvv) throws InterruptedException {
-        Controller.addPrubehList("Pro výrobek: " + vvv.getNazev() + " se hledá volná výrobní linka. V " + LocalDateTime.now() + ".");
+        Controller.addPrubehList("Pro výrobek: " + vvv.getNazev() + " se hledá volná výrobní linka.");
         Random rdn = new Random();
         Thread.sleep(rdn.nextInt(5000));
         Instance.vyrobniLinky.acquire();
