@@ -1,9 +1,10 @@
 # Kanban
-Semestrální projekt
+Zadání:
 
-Zadání
 ![alt text](https://user-images.githubusercontent.com/55660903/76703911-a6c1b000-66d5-11ea-8d04-6fe158419b54.png)
 
+
+Implementace:
 
 Class Diagram
 
