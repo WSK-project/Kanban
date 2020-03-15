@@ -1,22 +1,20 @@
-# KanbanBoard
+# KanbanBoard - Semestral project
 
-## Authors of Semestral project
+This is a semester project in software engineering B. The main task was to design and implement the production process using the given design pattern and hreads.
+
+## Authors
 
 David Jamárik & Ladislav Volný
 
-# assignment
+## Assignment
 
 ![alt text](https://user-images.githubusercontent.com/55660903/76703911-a6c1b000-66d5-11ea-8d04-6fe158419b54.png)
 
-Foobar is a Python library for dealing with word pluralization.
+## Design - UML diagrams
 
-## Installation
+### Class diagram
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
+![alt text](https://user-images.githubusercontent.com/55660903/76705508-c7433780-66e0-11ea-9176-00fc59d0d0dc.png)
 
 ## Usage
 
