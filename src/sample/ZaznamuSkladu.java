@@ -13,10 +13,6 @@ public class ZaznamuSkladu {
         return surovina;
     }
 
-    public void setSurovina(Suroviny surovina) {
-        this.surovina = surovina;
-    }
-
     public int getMnozstvi() {
         return mnozstvi;
     }

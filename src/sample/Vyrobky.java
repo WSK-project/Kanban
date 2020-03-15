@@ -69,24 +69,12 @@ public class Vyrobky extends Thread {
         return nazev;
     }
 
-    public void setNazev(String nazev) {
-        this.nazev = nazev;
-    }
-
     public int getDelkaVyroby() {
         return delkaVyroby;
     }
 
-    public void setDelkaVyroby(int delkaVyroby) {
-        this.delkaVyroby = delkaVyroby;
-    }
-
     public int getCasPotrebnyNaKontrolu() {
         return casPotrebnyNaKontrolu;
-    }
-
-    public void setCasPotrebnyNaKontrolu(int casPotrebnyNaKontrolu) {
-        this.casPotrebnyNaKontrolu = casPotrebnyNaKontrolu;
     }
 
     public Useky getMomentalniUsek() {
@@ -99,18 +87,6 @@ public class Vyrobky extends Thread {
 
     public List<Suroviny> getPotrebneSuroviny() {
         return potrebneSuroviny;
-    }
-
-    public void setPotrebneSuroviny(List<Suroviny> potrebneSuroviny) {
-        this.potrebneSuroviny = potrebneSuroviny;
-    }
-
-
-
-    public List<Suroviny> getSurVyrobkyByNazev(final String nazevvyr) {
-        return getPotrebneSuroviny().stream()
-                .filter(Vyrobky -> nazevvyr.equals(Vyrobky.getNazev()))
-                .collect(Collectors.toList());
     }
 
     public String textForPane() {

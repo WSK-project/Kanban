@@ -22,40 +22,6 @@ public class Sklady {
                 .get();
     }
 
-
-    //getters and setters
-    public String getNazev() {
-        return nazev;
-    }
-
-    public void setNazev(String nazev) {
-        this.nazev = nazev;
-    }
-
-    public TypSkladu getTypSkladu() {
-        return typSkladu;
-    }
-
-    public void setTypSkladu(TypSkladu typSkladu) {
-        this.typSkladu = typSkladu;
-    }
-
-    public int getCasVydaniSurovin() {
-        return casVydaniSurovin;
-    }
-
-    public void setCasVydaniSurovin(int casVydaniSurovin) {
-        this.casVydaniSurovin = casVydaniSurovin;
-    }
-
-    public List<ZaznamuSkladu> getSurovinyNaSklade() {
-        return surovinyNaSklade;
-    }
-
-    public void setSurovinyNaSklade(List<ZaznamuSkladu> surovinyNaSklade) {
-        this.surovinyNaSklade = surovinyNaSklade;
-    }
-
     @Override
     public String toString() {
         return "Sklady{" +

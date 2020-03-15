@@ -7,13 +7,9 @@ public class Suroviny {
         this.nazev = nazev;
     }
 
-    //getters and setters
+    //getter
     public String getNazev() {
         return nazev;
-    }
-
-    public void setNazev(String nazev) {
-        this.nazev = nazev;
     }
 
     @Override
