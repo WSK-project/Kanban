@@ -16,15 +16,9 @@ David Jamárik & Ladislav Volný
 
 ![alt text](https://user-images.githubusercontent.com/55660903/76705508-c7433780-66e0-11ea-9176-00fc59d0d0dc.png)
 
-## Usage
+### Activity Diagram
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+![alt text](https://user-images.githubusercontent.com/55660903/76705571-636d3e80-66e1-11ea-89aa-360f6bf39d25.jpg)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
