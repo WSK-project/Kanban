@@ -24,7 +24,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="899.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="899.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -141,7 +141,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane prefHeight="340.0" prefWidth="455.0">
                                                    <children>
-                                                      <TextArea editable="false" layoutX="35.0" layoutY="79.0" prefHeight="340.0" prefWidth="455.0" text="Návod:&#10;&#10;1. Vyber 1-5 výrobků &#10;2. Zmačkni  Start Process&#10;3. Přejdi na KanbanBoard&#10;4. Užij si zábavu :)&#10;5. Po skončení se můžeš podívat do Logu.&#10;&#10;6. Konec zábavy&#10;7. Brzy naviděnou." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <TextArea layoutX="35.0" layoutY="79.0" prefHeight="340.0" prefWidth="455.0" text="Návod:&#10;&#10;1. Vyber 1-5 výrobků &#10;2. Zmačkni  Start Process&#10;3. Přejdi na KanbanBoard&#10;4. Užij si zábavu :)&#10;5. Po vyskočení okna o ukončení výroby, vypni aplikaci.&#10;&#10;6. Konec zábavy&#10;7. Brzy naviděnou." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                    </children>
                                                    <VBox.margin>
                                                       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
